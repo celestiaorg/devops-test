@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - "main"
-      - "jbowen93/pre-release-action"
 
 jobs:
   pre-release:
