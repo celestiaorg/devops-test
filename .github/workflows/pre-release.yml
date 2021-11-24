@@ -7,15 +7,12 @@ on:
 
 jobs:
   pre-release:
-    name: "Pre Release"
     runs-on: "ubuntu-latest"
-
     steps:
-      # ...
+      - name: "Checkout source code"
+        uses: "actions/checkout@v2"
       - name: "Build"
-        run: |
-          make build
-
+        run: "make build"
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
