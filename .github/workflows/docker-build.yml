@@ -31,5 +31,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: celestiaorg/devops-test:latest
+          tags: ghcr.io/celestiaorg/devops-test:latest
 
