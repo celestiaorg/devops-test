@@ -2,7 +2,7 @@ name: Docker Build
 
 on:
   release:
-    types: [published]
+    types: [published, prereleased]
 
 jobs:
   docker:
