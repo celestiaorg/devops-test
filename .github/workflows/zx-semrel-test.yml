@@ -1,0 +1,44 @@
+name: zx-semrel-test
+
+on:
+  push:
+    branches: [ jbowen93/test-zx-semrel ]
+
+permissions:
+  checks: read
+  statuses: write
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show ref v1
+        run: echo "===============> Version from $GITHUB_REF"
+      # - uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0
+      #     ref: master
+
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     node-version: 16
+
+      # - name: Create .npmrc
+      #   run: |
+      #     echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+      #     echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> .npmrc
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # - name: Run release.mjs
+      #   run: |
+      #     npm link
+      #     zx-semrel
+      #   env:
+      #     VERBOSE: ${{ secrets.VERBOSE }}
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
+      #     GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
