@@ -24,7 +24,7 @@ jobs:
       - name: Run release.mjs
         run: |
           npm link zx-semrel
-          zx-semrel/zx-semrel
+          zx-semrel
         env:
           VERBOSE: ${{ secrets.VERBOSE }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
