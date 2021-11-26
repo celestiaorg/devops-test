@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - "main"
+  workflow_dispatch:
+    tags:
+        description: 'Manual Pre-Release'  
 
 jobs:
   pre-release:
