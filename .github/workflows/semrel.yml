@@ -7,9 +7,15 @@ on:
       - "main"
   workflow_dispatch:
 
+permissions: 
+  contents: write 
+  packages: write 
+
 jobs:
-  - name: Show ref v1 
-    run: echo "===============> Version from $GITHUB_REF"
+  pre-release:
+    steps:
+      - name: Show ref v1 
+        run: echo "===============> Version from $GITHUB_REF"
   # - name: Semantic Release
   #   uses: cycjimmy/semantic-release-action@v2.6.0
       
