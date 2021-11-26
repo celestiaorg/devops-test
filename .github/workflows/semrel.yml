@@ -1,5 +1,5 @@
 
-name: Auto Assign Issues
+name: Semrel
 
 on:
   push:
@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   pre-release:
+    runs-on: ubuntu-latest
     steps:
       - name: Show ref v1 
         run: echo "===============> Version from $GITHUB_REF"
