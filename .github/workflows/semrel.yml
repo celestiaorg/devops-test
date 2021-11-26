@@ -1,0 +1,15 @@
+
+name: Auto Assign Issues
+
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+jobs:
+  - name: Show ref v1 
+    run: echo "===============> Version from $GITHUB_REF"
+  # - name: Semantic Release
+  #   uses: cycjimmy/semantic-release-action@v2.6.0
+      
