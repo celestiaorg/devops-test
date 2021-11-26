@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - "main"
-      - "jbowen93/docker-build"
 
 jobs:
   pre-release:
