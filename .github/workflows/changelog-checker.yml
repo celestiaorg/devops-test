@@ -15,7 +15,7 @@ jobs:
       - name: "Checkout source code"
         uses: "actions/checkout@v2"
       - name: Changelog check
-        uses: Zomzog/changelog-checker@v1.2.0
+        uses: celestiaorg/changelog-checker@v1
         with:
           fileName: CHANGELOG.md
           checkNotification: Simple
