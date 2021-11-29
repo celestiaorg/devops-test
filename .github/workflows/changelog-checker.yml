@@ -13,14 +13,12 @@ jobs:
     permissions:
       contents: write 
     steps:
-      - name: Show ref v1 
-        run: echo "===============> Version from $GITHUB_REF"
-      # - name: "Checkout source code"
-      #   uses: "actions/checkout@v2"
-      # - name: Changelog check
-      #   uses: Zomzog/changelog-checker@v1.2.0
-      #   with:
-      #     fileName: CHANGELOG.md # default `CHANGELOG.adoc`
-      #     checkNotification: Simple # default `Detailed`
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "Checkout source code"
+        uses: "actions/checkout@v2"
+      - name: Changelog check
+        uses: Zomzog/changelog-checker@v1.2.0
+        with:
+          fileName: CHANGELOG.md
+          checkNotification: Simple # default `Detailed`
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
