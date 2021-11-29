@@ -1,0 +1,26 @@
+name: "changelog-checker"
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened, labeled, unlabeled]
+    branches:
+      - main
+
+jobs:
+  changelog-checker:
+    runs-on: "ubuntu-latest"
+    permissions:
+      contents: write 
+    steps:
+      - name: Show ref v1 
+        run: echo "===============> Version from $GITHUB_REF"
+      # - name: "Checkout source code"
+      #   uses: "actions/checkout@v2"
+      # - name: Changelog check
+      #   uses: Zomzog/changelog-checker@v1.2.0
+      #   with:
+      #     fileName: CHANGELOG.md # default `CHANGELOG.adoc`
+      #     checkNotification: Simple # default `Detailed`
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
