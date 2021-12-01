@@ -10,3 +10,6 @@ build: mod
 	@mkdir -p build/
 	@go build -o build/ .
 	@go mod tidy
+
+start: 
+	./build/devops-test
