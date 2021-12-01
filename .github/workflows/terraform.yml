@@ -16,9 +16,18 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform -chdir=terraform/cluster plan -var=do_token=${{ secrets.DIGITALOCEAN_TOKEN }} -out=tfplan
-      - run: echo "${{ steps.plan.outputs.stdout }}"
-      - run: echo "${{ steps.plan.outputs.stderr }}"
-      - run: echo "${{ steps.plan.outputs.exitcode }}"
+      - name: Echo stdout
+        run: echo "${{ steps.plan.outputs.stdout }}"
+      - name: Echo stderr
+        run: echo "${{ steps.plan.outputs.stderr }}"
+      - name: Echo exitcode
+        run: echo "${{ steps.plan.outputs.exitcode }}"
       - name: Terraform Apply
         id: apply
-        run: terraform apply tfplan -var=do_token=${{ secrets.DIGITALOCEAN_TOKEN }}
+        run: terraform -chdir=terraform/cluster apply tfplan
+      - name: Terraform Plan Destroy
+        id: plan-destroy
+        run: terraform -chdir=terraform/cluster plan -destroy -var=do_token=${{ secrets.DIGITALOCEAN_TOKEN }} -out=tfplan-destroy
+      - name: Terraform Apply Destroy
+        id: apply-destroy
+        run: terraform -chdir=terraform/cluster apply tfplan-destroy
