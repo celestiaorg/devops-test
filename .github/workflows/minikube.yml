@@ -23,12 +23,15 @@ jobs:
           minikube start
       - name: Build Image
         run: |
+          export SHELL=/bin/bash
           eval $(minikube docker-env)
           make docker-build
       - name: Deploy to Minikube
         run: |
           kubectl apply -f k8s/hello-dep.yaml
           kubectl apply -f k8s/hello-svc.yaml
+      - name: Sleep
+        run: sleep 5s
       - name: Test Service URLs
         run: |
           URL=$(minikube service hello --url)
