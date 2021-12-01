@@ -10,3 +10,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Update `.github/workflows/terraform.yml` to create then destroy K8s cluster on Digital Ocean
 - Update `main.go`, `Dockerfile`, and `Makefile` to create HTTP server on port 8080
 - Update `Dockerfile` to use `golang:alpine` instead of `golang:latest` (which uses Debian)
+- Create `k8s` dir with `hello-dep.yaml` and `hello-svc.yaml` as a minimal deployment + service for the hello world server
+- Create `.github/workflows/minikube.yml` stub GH action to enable dev/test on branch other than `main`
