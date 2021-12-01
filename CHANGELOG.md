@@ -12,3 +12,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Update `Dockerfile` to use `golang:alpine` instead of `golang:latest` (which uses Debian)
 - Create `k8s` dir with `hello-dep.yaml` and `hello-svc.yaml` as a minimal deployment + service for the hello world server
 - Create `.github/workflows/minikube.yml` stub GH action to enable dev/test on branch other than `main`
+- Update main.go to provide a http server on port 8080
+- Create real `.github/workflows/minikube.yml` GH action to build, deploy, and test docker image on minikube
