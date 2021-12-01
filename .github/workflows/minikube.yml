@@ -16,8 +16,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Start minikube
-        uses: medyagh/setup-minikube@master
         id: minikube
+        run: |
+          curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+          install minikube-linux-amd64 /usr/local/bin/minikube
       - name: Try the cluster !
         run: kubectl get pods -A
       - name: Build Image
