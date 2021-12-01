@@ -37,6 +37,8 @@ jobs:
       - name: Verify deployment
         run: |
           kubectl get deployment hello
+          sleep 5
+          kubectl get deployment hello
       - name: Test Service URLs
         run: |
           minikube service list
