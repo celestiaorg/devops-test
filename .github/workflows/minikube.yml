@@ -13,8 +13,6 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Start minikube
@@ -23,30 +21,15 @@ jobs:
           curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
           install minikube-linux-amd64 /usr/local/bin/minikube
           minikube start
-      - name: Try the cluster !
-        run: kubectl get pods -A
       - name: Build Image
         run: |
-          export SHELL=/bin/bash
           eval $(minikube docker-env)
           make docker-build
-          echo -n "verifying images:\n"
-          docker images
       - name: Deploy to Minikube
         run: |
           kubectl apply -f k8s/hello-dep.yaml
           kubectl apply -f k8s/hello-svc.yaml
-      - name: sleep
-        run: sleep 10s
-        shell: bash
-      - name: Verify deployment
-        run: |
-          kubectl get deployment hello
-          kubectl describe deployment hello
-          kubectl describe pod
       - name: Test Service URLs
         run: |
-          minikube service list
           URL=$(minikube service hello --url)
-          echo "------------------opening the service------------------"
           curl $URL
