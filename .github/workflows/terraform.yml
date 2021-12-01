@@ -14,7 +14,7 @@ jobs:
       - name: Terraform Init
         run: terraform -chdir=terraform/cluster init 
       - name: Terraform Plan
-        run: terraform -chdir=terraform/cluster plan
+        run: terraform -chdir=terraform/cluster plan -var=do_token=${{ secrets.DIGITALOCEAN_TOKEN }}
       - run: echo ${{ steps.plan.outputs.stdout }}
       - run: echo ${{ steps.plan.outputs.stderr }}
       - run: echo ${{ steps.plan.outputs.exitcode }}
