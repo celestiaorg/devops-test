@@ -37,7 +37,7 @@ jobs:
           kubectl apply -f k8s/hello-dep.yaml
           kubectl apply -f k8s/hello-svc.yaml
       - name: sleep
-        run: sleep 30s
+        run: sleep 10s
         shell: bash
       - name: Verify deployment
         run: |
