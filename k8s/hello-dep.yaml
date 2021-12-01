@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello
-        image: hello:v0.1
+        image: hello:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 8080

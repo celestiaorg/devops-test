@@ -9,3 +9,25 @@ jobs:
     steps:
       - name: "Checkout source code"
         uses: "actions/checkout@v2"
+      - name: start minikube
+        uses: medyagh/setup-minikube@master
+        id: minikube
+      - name: Try the cluster !
+       run: kubectl get pods -A
+      - name: Build image
+        run: |
+          export SHELL=/bin/bash
+          eval $(minikube -p minikube docker-env)
+          make docker-build
+          echo -n "verifying images:"
+          docker images
+      - name: Deploy to minikube
+        run: |
+          kubectl apply -f k8s/hello-dep.yaml
+          kubectl apply -f k8s/hello-svc.yaml
+      - name: Test service URLs
+        run: |
+          minikube service list
+          minikube service hello --url
+          echo "------------------opening the service------------------"
+          curl $(minikube service hello --url)  
