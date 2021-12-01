@@ -43,7 +43,7 @@ jobs:
         run: |
           kubectl get deployment hello
           kubectl describe deployment hello
-          kubectle describe pod
+          kubectl describe pod
       - name: Test Service URLs
         run: |
           minikube service list
