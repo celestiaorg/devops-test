@@ -28,7 +28,7 @@ jobs:
       - name: Build Image
         run: |
           export SHELL=/bin/bash
-          eval $(minikub docker-env)
+          eval $(minikube docker-env)
           make docker-build
           echo -n "verifying images:\n"
           docker images
