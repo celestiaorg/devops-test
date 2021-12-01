@@ -7,3 +7,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Update `.github/workflows/changelog-checker.yml` to use the fork `celestiaorg/changelog-checker@v1`
 - Create `.github/workflows/terraform.yml` to provide stub GH action for dev/test
+- Update `.github/workflows/terraform.yml` to create then destroy K8s cluster on Digital Ocean
