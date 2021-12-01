@@ -26,14 +26,17 @@ jobs:
       - name: Build Image
         run: |
           export SHELL=/bin/bash
-          eval $(minikube -p minikube docker-env)
+          eval $(minikub docker-env)
           make docker-build
-          echo -n "verifying images:"
+          echo -n "verifying images:\n"
           docker images
       - name: Deploy to Minikube
         run: |
           kubectl apply -f k8s/hello-dep.yaml
           kubectl apply -f k8s/hello-svc.yaml
+      - name: Verify deployment
+        run: |
+          kubectl get deployment hello
       - name: Test Service URLs
         run: |
           minikube service list
