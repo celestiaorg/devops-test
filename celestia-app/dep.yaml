@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: test
+  name: test
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: test
+    spec:
+      containers:
+      - image: jbowen93/celestia-app:boot0-8
+        name: boot0
+        ports:
+        - containerPort: 26566
+        resources: {}
+      - image: jbowen93/celestia-app:boot1-8
+        name: boot1
+        ports:
+        - containerPort: 26566
+        resources: {}
+status: {}
