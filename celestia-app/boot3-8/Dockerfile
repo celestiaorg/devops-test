@@ -16,7 +16,7 @@ COPY boot3-8/app ${APP}/${CONFIG}
 COPY boot3-8/config.sh ${APP}/config.sh
 
 EXPOSE 26656 26657 1317 9090
- 
+
 RUN chmod +x /capp/config.sh && chmod +x /capp/celestia-appd
 RUN /capp/config.sh
-CMD ./celestia-appd start --home $APP/$CONFIG
+CMD celestia-appd start --home $APP/$CONFIG
