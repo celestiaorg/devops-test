@@ -12,8 +12,8 @@ services:
             "c4c8024a2447f08136a6a9b10515232114011ecd@192.167.10.5:26656" 
         ]
     volumes:
-       - /root/devops-test/devnet/node0/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
-       - /root/devops-test/devnet/node0/app/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/node0/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/node0/app/config/node_key.json:/celestia-app/config/node_key.json:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.2
@@ -29,8 +29,8 @@ services:
             "c4c8024a2447f08136a6a9b10515232114011ecd@192.167.10.5:26656"
             ]
     volumes:
-       - /root/devops-test/devnet/node1/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
-       - /root/devops-test/devnet/node1/app/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/node1/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/node1/app/config/node_key.json:/celestia-app/config/node_key.json:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.3
@@ -46,8 +46,8 @@ services:
             "c4c8024a2447f08136a6a9b10515232114011ecd@192.167.10.5:26656"
              ]
     volumes:
-       - /root/devops-test/devnet/node2/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
-       - /root/devops-test/devnet/node2/app/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/node2/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/devnet/node2/app/config/node_key.json:/celestia-app/config/node_key.json:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.4
@@ -63,8 +63,8 @@ services:
             "9908b74112720aedabb79909fa21a2d7e59a38be@192.167.10.4:26656",
              ]
      volumes:
-       - /root/devops-test/devnet/node3/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
-       - /root/devops-test/devnet/node3/app/config/node_key.json:/celestia-app/config/node_key.json:ro
+       - ${PWD}/node3/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/node3/app/config/node_key.json:/celestia-app/config/node_key.json:ro
      networks:
        localnet:
          ipv4_address: 192.167.10.5
