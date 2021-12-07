@@ -14,7 +14,7 @@ WORKDIR $APP
 COPY celestia-appd ${APP}/celestia-appd
 
 # Copy in the pre-generated config
-COPY gentx ${APP}/config/
+COPY gentx ${APP}/config/gentx
 COPY golden-genesis.json ${APP}/config/genesis.json
 COPY config.toml ${APP}/config/config.toml
 COPY app.toml ${APP}/config/app.toml

@@ -1,6 +1,6 @@
 {
-  "genesis_time": "2021-12-02T18:22:20.222189Z",
-  "chain_id": "devnet",
+  "genesis_time": "2021-12-06T23:46:39.85163483Z",
+  "chain_id": "devnet-2",
   "initial_height": "1",
   "consensus_params": {
     "block": {
@@ -33,28 +33,28 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "celes162dkzx690tvdvmkn0syuakn7rdtwlrycer4pew",
+          "address": "celes1p9hgvaaydv829qsenw85h6k8gtdq689xulx6y6",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "celes15nq0mkvr5xcktfmgw42ua0jqu0h43datkgl4jq",
+          "address": "celes1nmrsdzn5dwp7agrp9shk9xjuczarue6mylvf6q",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "celes1xcatlvqualqjrt3w2rr2h5sakqpj3dcu5rewww",
+          "address": "celes10z2juz962nyp9f5r45sqrj9en4jxr5lcynjjqx",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "celes14k8chc52pa78av8zmljjsa59j6dvv9qz3st762",
+          "address": "celes1qnlpkx5js4kr9w65gpzw648qctfe5z2nu7z65j",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
@@ -68,38 +68,38 @@
       },
       "balances": [
         {
-          "address": "celes1xcatlvqualqjrt3w2rr2h5sakqpj3dcu5rewww",
+          "address": "celes1qnlpkx5js4kr9w65gpzw648qctfe5z2nu7z65j",
           "coins": [
             {
               "denom": "celes",
-              "amount": "1000000000000"
+              "amount": "800000000000"
             }
           ]
         },
         {
-          "address": "celes15nq0mkvr5xcktfmgw42ua0jqu0h43datkgl4jq",
+          "address": "celes1p9hgvaaydv829qsenw85h6k8gtdq689xulx6y6",
           "coins": [
             {
               "denom": "celes",
-              "amount": "1000000000000"
+              "amount": "800000000000"
             }
           ]
         },
         {
-          "address": "celes14k8chc52pa78av8zmljjsa59j6dvv9qz3st762",
+          "address": "celes10z2juz962nyp9f5r45sqrj9en4jxr5lcynjjqx",
           "coins": [
             {
               "denom": "celes",
-              "amount": "1000000000000"
+              "amount": "800000000000"
             }
           ]
         },
         {
-          "address": "celes162dkzx690tvdvmkn0syuakn7rdtwlrycer4pew",
+          "address": "celes1nmrsdzn5dwp7agrp9shk9xjuczarue6mylvf6q",
           "coins": [
             {
               "denom": "celes",
-              "amount": "1000000000000"
+              "amount": "800000000000"
             }
           ]
         }
@@ -150,7 +150,7 @@
               {
                 "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
                 "description": {
-                  "moniker": "josh",
+                  "moniker": "josh-test2",
                   "identity": "",
                   "website": "",
                   "security_contact": "",
@@ -162,19 +162,19 @@
                   "max_change_rate": "0.010000000000000000"
                 },
                 "min_self_delegation": "1",
-                "delegator_address": "celes1xcatlvqualqjrt3w2rr2h5sakqpj3dcu5rewww",
-                "validator_address": "celesvaloper1xcatlvqualqjrt3w2rr2h5sakqpj3dcu3wkvex",
+                "delegator_address": "celes10z2juz962nyp9f5r45sqrj9en4jxr5lcynjjqx",
+                "validator_address": "celesvaloper10z2juz962nyp9f5r45sqrj9en4jxr5lcp7ashw",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "95PeH1mX6a2sLmkgkMSczUrkyG/TsP2wU+tacPIJh+k="
+                  "key": "A6dM1EOD7JImalDQXtL2xDZIlmxYZ+HeWrjMwyM4blA="
                 },
                 "value": {
                   "denom": "celes",
-                  "amount": "700000000000"
+                  "amount": "5000000000"
                 }
               }
             ],
-            "memo": "040875893e314cf0282ccbf5e14c602c3dfe9aad@192.168.1.33:26656",
+            "memo": "9908b74112720aedabb79909fa21a2d7e59a38be@159.223.5.92:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -184,7 +184,7 @@
               {
                 "public_key": {
                   "@type": "/cosmos.crypto.secp256k1.PubKey",
-                  "key": "A+Fj6Yt0Z3M7KXV3idStSdZ9eZKpYc5J4BqCtWEi1Zmr"
+                  "key": "Ark9251ChEBaS2wQUSP+K1x8aPiDGTRMjlTo8kfJ570u"
                 },
                 "mode_info": {
                   "single": {
@@ -202,7 +202,7 @@
             }
           },
           "signatures": [
-            "4wATB2K6Pyoff+3zYXhuYHzJ4ufVUD8ERG2jGtiUrFdSSmYRlVq7hpRi7gtbc8h8EMzWCZ5AP/OyCNWoeCNjSw=="
+            "U4aoRrYmjE4Ltsu6FVKh6pRAfmH71kj6Dc64tWU4GtUimBKJSOPedNTHcZYPdeByEPQVTm8Jao4cSCYpT2KjBA=="
           ]
         },
         {
@@ -211,7 +211,7 @@
               {
                 "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
                 "description": {
-                  "moniker": "josh",
+                  "moniker": "josh-test3",
                   "identity": "",
                   "website": "",
                   "security_contact": "",
@@ -223,19 +223,19 @@
                   "max_change_rate": "0.010000000000000000"
                 },
                 "min_self_delegation": "1",
-                "delegator_address": "celes162dkzx690tvdvmkn0syuakn7rdtwlrycer4pew",
-                "validator_address": "celesvaloper162dkzx690tvdvmkn0syuakn7rdtwlrycuw6rwx",
+                "delegator_address": "celes1qnlpkx5js4kr9w65gpzw648qctfe5z2nu7z65j",
+                "validator_address": "celesvaloper1qnlpkx5js4kr9w65gpzw648qctfe5z2nendcr6",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "/gUAWQdtNK4mgo6ildGhMWfSLJl/9i85Fqui2GCTyHw="
+                  "key": "db9zCH/9C5OihAyIt1UZcgLdP+sGpq5W576kNcvjLvI="
                 },
                 "value": {
                   "denom": "celes",
-                  "amount": "700000000000"
+                  "amount": "5000000000"
                 }
               }
             ],
-            "memo": "2499f45623a1bd130f8beeab4b36d0013b935e88@192.168.1.33:26656",
+            "memo": "c4c8024a2447f08136a6a9b10515232114011ecd@104.248.84.86:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -245,7 +245,7 @@
               {
                 "public_key": {
                   "@type": "/cosmos.crypto.secp256k1.PubKey",
-                  "key": "ArcKHJwiQiaU0l7De79HJW+KxAEW7JQlMbfWYmENSUWJ"
+                  "key": "AkeSZh8cmEIN5sQqEfeYwFlQHLK6IsZXratFBOQb77Au"
                 },
                 "mode_info": {
                   "single": {
@@ -263,7 +263,7 @@
             }
           },
           "signatures": [
-            "Vpehkki/1vwYLLgApBwGPA4jC0M/jF+bslZdCkVu1lFpPx7psm4skNktHyEPB7LAMN5ScQNvkjbJo7h+cqOGSw=="
+            "xgoROHpIbVskozBoeqIqislWge3OWP9GJKEsI0xGFmJOZx3VfSdzwEcGO9azOSSh6v82AEwR0w7H573aMZPayQ=="
           ]
         },
         {
@@ -272,7 +272,7 @@
               {
                 "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
                 "description": {
-                  "moniker": "josh",
+                  "moniker": "ReiAyanami",
                   "identity": "",
                   "website": "",
                   "security_contact": "",
@@ -284,19 +284,19 @@
                   "max_change_rate": "0.010000000000000000"
                 },
                 "min_self_delegation": "1",
-                "delegator_address": "celes14k8chc52pa78av8zmljjsa59j6dvv9qz3st762",
-                "validator_address": "celesvaloper14k8chc52pa78av8zmljjsa59j6dvv9qz5ayudz",
+                "delegator_address": "celes1p9hgvaaydv829qsenw85h6k8gtdq689xulx6y6",
+                "validator_address": "celesvaloper1p9hgvaaydv829qsenw85h6k8gtdq689xejfcnj",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "CeleRWKRbu2Bcg2NOsvLVHXvN0EW2o35EULEm/OiH38="
+                  "key": "zrejuVfdcr4UIdwi4kXC3OvGfOydDPZQjQ5o3wesDcQ="
                 },
                 "value": {
                   "denom": "celes",
-                  "amount": "700000000000"
+                  "amount": "5000000000"
                 }
               }
             ],
-            "memo": "abf29b9e3f71b69fe78dea7ae62bd4764ab19e47@192.168.1.33:26656",
+            "memo": "d78ad9583f27cc73738f246b93186e40cc0272e4@128.199.51.208:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -306,7 +306,7 @@
               {
                 "public_key": {
                   "@type": "/cosmos.crypto.secp256k1.PubKey",
-                  "key": "A/bOVBNgw1F1nDLT74w75aeFAXom5giDk2e2jFUMjIes"
+                  "key": "A3HXXdHttdwg42ER3SnqtFIvzs+i5h2JAEdV/RXZkHp/"
                 },
                 "mode_info": {
                   "single": {
@@ -324,7 +324,7 @@
             }
           },
           "signatures": [
-            "mfdF6eh7YfTiYVVoLSl+1dXm92q0XJqGHyWrx/dmYNFxAYu21sNWa4tDNlsbMzKUD4/SGlpNxa6PwRbgbK6A6Q=="
+            "SmH1kerqoS7hAYHEOGsSSXKTrxLnBqh+UmdXWUvl+uJl3XSwicEo421ypWsN0rNxJFawFQTI2OK4pZfSEHf+jw=="
           ]
         },
         {
@@ -333,7 +333,7 @@
               {
                 "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
                 "description": {
-                  "moniker": "josh",
+                  "moniker": "josh-test1",
                   "identity": "",
                   "website": "",
                   "security_contact": "",
@@ -345,19 +345,19 @@
                   "max_change_rate": "0.010000000000000000"
                 },
                 "min_self_delegation": "1",
-                "delegator_address": "celes15nq0mkvr5xcktfmgw42ua0jqu0h43datkgl4jq",
-                "validator_address": "celesvaloper15nq0mkvr5xcktfmgw42ua0jqu0h43datn9sh9g",
+                "delegator_address": "celes1nmrsdzn5dwp7agrp9shk9xjuczarue6mylvf6q",
+                "validator_address": "celesvaloper1nmrsdzn5dwp7agrp9shk9xjuczarue6mpjrtdg",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "ouiiWIw7xrqI9m8fo4sIyfsT1u1klCK+8LLCF/IAYhM="
+                  "key": "a9ENEQ6o2f4F0QENZ0Rgcur/CmaOdcfxpacOlpiP7UU="
                 },
                 "value": {
                   "denom": "celes",
-                  "amount": "700000000000"
+                  "amount": "5000000000"
                 }
               }
             ],
-            "memo": "dd0b30945d4af7c6b0acdbd9c7dbfe9e869db03e@192.168.1.33:26656",
+            "memo": "ffdc6d353abf0c53f35fbfe1106dc216121e1d17@142.93.232.20:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -367,7 +367,7 @@
               {
                 "public_key": {
                   "@type": "/cosmos.crypto.secp256k1.PubKey",
-                  "key": "AtOmUPolz881utx2uusTG19rr8yVlEhH3NL9msrMtryG"
+                  "key": "Aln8BzGTmfxIVYAeu0Y9Dnrnlozou/9qnkStWCXEeXXP"
                 },
                 "mode_info": {
                   "single": {
@@ -385,7 +385,7 @@
             }
           },
           "signatures": [
-            "OPJiJoquFvpO0WK8FMC/vOKLNM6KfV76lyetgC53cuYvfvcaM5ySjS9DbPgpVrc/IBxUwHzRs3r+1HMCWFldoA=="
+            "JNkbamMggSmrqZN0DF6RON7rrCH6UijL6FZly9OWZh0pCPxmqSTxQWSJxvVgbZGvzfBmliwOk90XvmLTNb6/iA=="
           ]
         }
       ]
