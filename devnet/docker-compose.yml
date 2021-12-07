@@ -7,13 +7,10 @@ services:
     command: [
             "start",
             "--p2p.persistent_peers",
-            "d78ad9583f27cc73738f246b93186e40cc0272e4@192.167.10.2:26656",
             "ffdc6d353abf0c53f35fbfe1106dc216121e1d17@192.167.10.3:26656",
             "9908b74112720aedabb79909fa21a2d7e59a38be@192.167.10.4:26656",
             "c4c8024a2447f08136a6a9b10515232114011ecd@192.167.10.5:26656" 
         ]
-    ports:
-      - "26656-26657:26656-26657"
     volumes:
        - /root/devops-test/devnet/node0/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
        - /root/devops-test/devnet/node0/app/config/node_key.json:/celestia-app/config/node_key.json:ro
@@ -28,12 +25,9 @@ services:
             "start",
             "--p2p.persistent_peers",
             "d78ad9583f27cc73738f246b93186e40cc0272e4@192.167.10.2:26656",
-            "ffdc6d353abf0c53f35fbfe1106dc216121e1d17@192.167.10.3:26656",
             "9908b74112720aedabb79909fa21a2d7e59a38be@192.167.10.4:26656",
             "c4c8024a2447f08136a6a9b10515232114011ecd@192.167.10.5:26656"
-        ]
-    ports:
-      - "26659-26660:26656-26657"
+            ]
     volumes:
        - /root/devops-test/devnet/node1/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
        - /root/devops-test/devnet/node1/app/config/node_key.json:/celestia-app/config/node_key.json:ro
@@ -49,11 +43,8 @@ services:
             "--p2p.persistent_peers",
             "d78ad9583f27cc73738f246b93186e40cc0272e4@192.167.10.2:26656",
             "ffdc6d353abf0c53f35fbfe1106dc216121e1d17@192.167.10.3:26656",
-            "9908b74112720aedabb79909fa21a2d7e59a38be@192.167.10.4:26656",
             "c4c8024a2447f08136a6a9b10515232114011ecd@192.167.10.5:26656"
-        ]
-    ports:
-      - "26661-26662:26656-26657"
+             ]
     volumes:
        - /root/devops-test/devnet/node2/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
        - /root/devops-test/devnet/node2/app/config/node_key.json:/celestia-app/config/node_key.json:ro
@@ -70,10 +61,7 @@ services:
             "d78ad9583f27cc73738f246b93186e40cc0272e4@192.167.10.2:26656",
             "ffdc6d353abf0c53f35fbfe1106dc216121e1d17@192.167.10.3:26656",
             "9908b74112720aedabb79909fa21a2d7e59a38be@192.167.10.4:26656",
-            "c4c8024a2447f08136a6a9b10515232114011ecd@192.167.10.5:26656"
-        ]
-     ports:
-       - "26663-26664:26656-26657"
+             ]
      volumes:
        - /root/devops-test/devnet/node3/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
        - /root/devops-test/devnet/node3/app/config/node_key.json:/celestia-app/config/node_key.json:ro
