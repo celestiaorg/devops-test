@@ -14,9 +14,11 @@ jobs:
           cd devnet
           chmod 0600 celestia-node/full0/nodekey0
           chmod 0600 celestia-node/full1/nodekey1
+          docker pull jbowen93:celestia-app:devnet
+          docker pull jbowen93:celestia-node:devnet
+          docker pull curlimages:curl:7.80.0
           docker-compose -f docker/docker-compose-full-node.yml up -d
           echo "Waiting for cluster to spin up"
-          sleep 15
           node0=$(docker run --network docker_localnet --rm curlimages/curl:7.80.0 -s "192.167.10.5:26657/block?height=1" | jq .result.block_id.hash)
           node1=$(docker run --network docker_localnet --rm curlimages/curl:7.80.0 -s "192.167.10.5:26657/block?height=1" | jq .result.block_id.hash)
           node2=$(docker run --network docker_localnet --rm curlimages/curl:7.80.0 -s "192.167.10.5:26657/block?height=1" | jq .result.block_id.hash)
