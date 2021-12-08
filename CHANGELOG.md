@@ -21,3 +21,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Add `celestia-node` subdir to `/devnet` with `Dockerfile` and other config files for a 2 (full) node network connecting to the above `celestia-app` network
 - Add `docker` directory to `/devnet` with several `docker-compose.yml` files to automate creation of above networks
 - Update `celestia-app` and `celestia-node` docker images to base off Ubuntu instead of Alpine
+- Add `.github/workflows/docker-compose.yml` to run and test docker-compose cluster
