@@ -1,0 +1,119 @@
+version: '3'
+
+services:
+  node0:
+    container_name: node0
+    image: "jbowen93/celestia-app:devnet"
+    command: [
+            "start",
+            "--p2p.persistent_peers",
+            "ffdc6d353abf0c53f35fbfe1106dc216121e1d17@192.167.10.3:26656",
+            "9908b74112720aedabb79909fa21a2d7e59a38be@192.167.10.4:26656",
+            "c4c8024a2447f08136a6a9b10515232114011ecd@192.167.10.5:26656" 
+        ]
+    volumes:
+       - ${PWD}/celestia-app/node0/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/celestia-app/node0/app/config/node_key.json:/celestia-app/config/node_key.json:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.2
+
+  node1:
+    container_name: node1
+    image: "jbowen93/celestia-app:devnet"
+    command: [
+            "start",
+            "--p2p.persistent_peers",
+            "d78ad9583f27cc73738f246b93186e40cc0272e4@192.167.10.2:26656",
+            "9908b74112720aedabb79909fa21a2d7e59a38be@192.167.10.4:26656",
+            "c4c8024a2447f08136a6a9b10515232114011ecd@192.167.10.5:26656"
+            ]
+    volumes:
+       - ${PWD}/celestia-app/node1/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/celestia-app/node1/app/config/node_key.json:/celestia-app/config/node_key.json:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.3
+
+  node2:
+    container_name: node2
+    image: "jbowen93/celestia-app:devnet"    
+    command: [
+            "start",
+            "--p2p.persistent_peers",
+            "d78ad9583f27cc73738f246b93186e40cc0272e4@192.167.10.2:26656",
+            "ffdc6d353abf0c53f35fbfe1106dc216121e1d17@192.167.10.3:26656",
+            "c4c8024a2447f08136a6a9b10515232114011ecd@192.167.10.5:26656"
+             ]
+    volumes:
+       - ${PWD}/celestia-app/node2/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/celestia-app/node2/app/config/node_key.json:/celestia-app/config/node_key.json:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.4
+
+  node3:
+    container_name: node3
+    image: "jbowen93/celestia-app:devnet"
+    command: [
+            "start",
+            "--p2p.persistent_peers",
+            "d78ad9583f27cc73738f246b93186e40cc0272e4@192.167.10.2:26656",
+            "ffdc6d353abf0c53f35fbfe1106dc216121e1d17@192.167.10.3:26656",
+            "9908b74112720aedabb79909fa21a2d7e59a38be@192.167.10.4:26656",
+             ]
+    volumes:
+       - ${PWD}/celestia-app/node3/app/config/priv_validator_key.json:/celestia-app/config/priv_validator_key.json:ro
+       - ${PWD}/celestia-app/node3/app/config/node_key.json:/celestia-app/config/node_key.json:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.5
+
+  full-node0:
+    container_name: full-node0
+    image: "jbowen93/celestia-node:devnet"
+    command: [
+            "full",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.2:26657",
+            "--headers.trusted-hash", 
+            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E",
+            "--log.level", "debug"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full0/nodekey0:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/full0/config-full0.toml:/celestia-full/config.toml:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.6
+
+  full-node1:
+    container_name: full-node1
+    image: "jbowen93/celestia-node:devnet"
+    command: [
+            "full",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.3:26657",
+            "--headers.trusted-hash", 
+            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E",
+            "--log.level", "debug"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full1/nodekey1:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/full1/config-full1.toml:/celestia-full/config.toml:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.7
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 192.167.10.0/16
