@@ -1,5 +1,9 @@
 .DS_Store
 
+# Ignore binaries that may be present for docker builds
+devnet/**/celestia-appd
+devnet/**/celestia
+
 # Ignore all build/ directories
 **/build/*
 
