@@ -1,10 +1,6 @@
-# TODO: We probably don't need golang anymore
-FROM alpine
+FROM ubuntu
 
-# Because Alpine
-RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
-RUN apk update && \
-    apk --no-cache add bash
+RUN apt update
 
 ENV APP /celestia-app
 WORKDIR $APP
