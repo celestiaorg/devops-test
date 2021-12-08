@@ -19,6 +19,7 @@ jobs:
           docker pull curlimages/curl:7.80.0
           docker-compose -f docker/docker-compose-full-node.yml up -d
           echo "Waiting for cluster to spin up"
+          sleep 5
           node0=$(docker run --network docker_localnet --rm curlimages/curl:7.80.0 -s "192.167.10.5:26657/block?height=1" | jq .result.block_id.hash)
           node1=$(docker run --network docker_localnet --rm curlimages/curl:7.80.0 -s "192.167.10.5:26657/block?height=1" | jq .result.block_id.hash)
           node2=$(docker run --network docker_localnet --rm curlimages/curl:7.80.0 -s "192.167.10.5:26657/block?height=1" | jq .result.block_id.hash)
