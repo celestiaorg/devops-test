@@ -12,7 +12,7 @@
   Bootstrapper = false
   BootstrapPeers = []
   MutualPeers = []
-  PeerExchange = false
+  PeerExchange = true 
   [P2P.ConnManager]
     Low = 50
     High = 100

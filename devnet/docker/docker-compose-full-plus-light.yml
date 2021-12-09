@@ -73,13 +73,12 @@ services:
     container_name: full-node0
     image: "jbowen93/celestia-node-full:devnet"
     command: [
-            "full",
             "--repo.path", "/celestia-full",
             "start",
             "--core.remote", 
             "tcp://192.167.10.2:26657",
             "--headers.trusted-hash", 
-            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E"
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
              ]
     volumes:
        - ${PWD}/celestia-node/full/full0/nodekey0:/celestia-full/keys/OAZHALLLMV4Q:ro
@@ -92,13 +91,12 @@ services:
     container_name: full-node1
     image: "jbowen93/celestia-node-full:devnet"
     command: [
-            "full",
             "--repo.path", "/celestia-full",
             "start",
             "--core.remote", 
             "tcp://192.167.10.3:26657",
             "--headers.trusted-hash", 
-            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E"
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
              ]
     volumes:
        - ${PWD}/celestia-node/full/full1/nodekey1:/celestia-full/keys/OAZHALLLMV4Q:ro
@@ -111,13 +109,12 @@ services:
     container_name: full-node2
     image: "jbowen93/celestia-node-full:devnet"
     command: [
-            "full",
             "--repo.path", "/celestia-full",
             "start",
             "--core.remote", 
             "tcp://192.167.10.4:26657",
             "--headers.trusted-hash", 
-            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E"
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
              ]
     volumes:
        - ${PWD}/celestia-node/full/full2/nodekey2:/celestia-full/keys/OAZHALLLMV4Q:ro
@@ -130,13 +127,12 @@ services:
     container_name: full-node3
     image: "jbowen93/celestia-node-full:devnet"
     command: [
-            "full",
             "--repo.path", "/celestia-full",
             "start",
             "--core.remote", 
             "tcp://192.167.10.5:26657",
             "--headers.trusted-hash", 
-            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E"
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
              ]
     volumes:
        - ${PWD}/celestia-node/full/full3/nodekey3:/celestia-full/keys/OAZHALLLMV4Q:ro
@@ -149,13 +145,12 @@ services:
     container_name: light-node0
     image: "jbowen93/celestia-node-light:devnet"
     command: [
-            "light",
             "--repo.path", "/celestia-light",
             "start",
             "--headers.trusted-peer",
             "/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
             "--headers.trusted-hash", 
-            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E"
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
              ]
     volumes:
        - ${PWD}/celestia-node/light/light0/nodekey0:/celestia-light/keys/OAZHALLLMV4Q:ro
@@ -164,17 +159,16 @@ services:
       localnet:
         ipv4_address: 192.167.10.10
 
-  light-node0:
+  light-node1:
     container_name: light-node1
     image: "jbowen93/celestia-node-light:devnet"
     command: [
-            "light",
             "--repo.path", "/celestia-light",
             "start",
             "--headers.trusted-peer",
             "/ip4/192.167.10.7/tcp/2121/p2p/12D3KooWGGtejCnY3Q9XUUy6muSRm1Whgf8ijTRtwJ8DGA1164EB",
             "--headers.trusted-hash", 
-            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E"
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
              ]
     volumes:
        - ${PWD}/celestia-node/light/light1/nodekey1:/celestia-light/keys/OAZHALLLMV4Q:ro
@@ -183,17 +177,16 @@ services:
       localnet:
         ipv4_address: 192.167.10.11
         
-  light-node0:
+  light-node2:
     container_name: light-node2
     image: "jbowen93/celestia-node-light:devnet"
     command: [
-            "light",
             "--repo.path", "/celestia-light",
             "start",
             "--headers.trusted-peer",
             "/ip4/192.167.10.8/tcp/2121/p2p/12D3KooWQCbe8R4QD1jxnUs5SWWdFg5Kza3mBE94Cz1RJnLTXfNM",
             "--headers.trusted-hash", 
-            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E"
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
              ]
     volumes:
        - ${PWD}/celestia-node/light/light2/nodekey2:/celestia-light/keys/OAZHALLLMV4Q:ro
@@ -202,17 +195,16 @@ services:
       localnet:
         ipv4_address: 192.167.10.12
 
-  light-node0:
+  light-node3:
     container_name: light-node3
     image: "jbowen93/celestia-node-light:devnet"
     command: [
-            "light",
             "--repo.path", "/celestia-light",
             "start",
             "--headers.trusted-peer",
             "/ip4/192.167.10.9/tcp/2121/p2p/12D3KooWA6uovjYCgFvWhAbrcQmnLihFy1gZkdyJt8SrPKZjeWda",
             "--headers.trusted-hash", 
-            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E"
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
              ]
     volumes:
        - ${PWD}/celestia-node/light/light3/nodekey3:/celestia-light/keys/OAZHALLLMV4Q:ro
