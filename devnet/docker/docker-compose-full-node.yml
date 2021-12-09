@@ -107,6 +107,44 @@ services:
       localnet:
         ipv4_address: 192.167.10.7
 
+  full-node1:
+    container_name: full-node2
+    image: "jbowen93/celestia-node:devnet"
+    command: [
+            "full",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.4:26657",
+            "--headers.trusted-hash", 
+            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full2/nodekey2:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/full2/config-full2.toml:/celestia-full/config.toml:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.8
+
+  full-node1:
+    container_name: full-node3
+    image: "jbowen93/celestia-node:devnet"
+    command: [
+            "full",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.5:26657",
+            "--headers.trusted-hash", 
+            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full3/nodekey3:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/full3/config-full3.toml:/celestia-full/config.toml:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.9
+
 networks:
   localnet:
     driver: bridge
