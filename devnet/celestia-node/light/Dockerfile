@@ -14,6 +14,6 @@ RUN [ "/bin/bash", "-c", "exec ./celestia \
     light --repo.path ${APP} init" ]
 
 ENTRYPOINT [ "/bin/bash", "-c", "sleep 2 && \ 
-            exec ./celestia \
+            exec ./celestia light \
             \"${@}\"", "--" ]
 CMD ["--help"]

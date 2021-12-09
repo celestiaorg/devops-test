@@ -145,6 +145,25 @@ services:
       localnet:
         ipv4_address: 192.167.10.9
 
+  light-node0:
+    container_name: light-node0
+    image: "jbowen93/celestia-node:devnet"
+    command: [
+            "light",
+            "--repo.path", "/celestia-light",
+            "start",
+            "--headers.trusted-peer",
+            "/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
+            "--headers.trusted-hash", 
+            "A9272DAD1BEBEF104EBDBF071E39789E21C0650AF5B76A7062213B772B6B925E"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/light0/nodekey0:/celestia-light/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/light0/config-light0.toml:/celestia-light/config.toml:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.10
+
 networks:
   localnet:
     driver: bridge
