@@ -12,11 +12,10 @@ jobs:
       - name: "Setup and Test Cluster"
         run: |
           cd devnet
-          chmod 0600 celestia-node/full0/nodekey0
-          chmod 0600 celestia-node/full1/nodekey1
-          docker-compose -f docker/docker-compose-full-node.yml up -d
+          chmod 0600 celestia-node/full/*/nodekey* && chmod 0600 celestia-node/light/*/nodekey*
+          docker-compose -f docker/docker-compose.yml up -d
           echo "Waiting for cluster to come up"
-          sleep 30
+          sleep 50
           node0=$(docker run --network docker_localnet --rm curlimages/curl:7.80.0 -s "192.167.10.5:26657/block?height=1" | jq .result.block_id.hash)
           node1=$(docker run --network docker_localnet --rm curlimages/curl:7.80.0 -s "192.167.10.5:26657/block?height=1" | jq .result.block_id.hash)
           node2=$(docker run --network docker_localnet --rm curlimages/curl:7.80.0 -s "192.167.10.5:26657/block?height=1" | jq .result.block_id.hash)
