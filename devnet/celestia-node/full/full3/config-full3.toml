@@ -1,0 +1,24 @@
+[Core]
+  Remote = false
+  [Core.RemoteConfig]
+    Protocol = ""
+    RemoteAddr = ""
+[P2P]
+  ListenAddresses = ["/ip4/0.0.0.0/tcp/2121", "/ip6/::/tcp/2121"]
+  AnnounceAddresses = []
+  NoAnnounceAddresses = ["/ip4/0.0.0.0/tcp/2121", "/ip4/127.0.0.1/tcp/2121", "/ip6/::/tcp/2121"]
+  Network = "devnet"
+  Bootstrapper = false
+  BootstrapPeers = []
+  MutualPeers = ["/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
+		 "/ip4/192.167.10.7/tcp/2121/p2p/12D3KooWGGtejCnY3Q9XUUy6muSRm1Whgf8ijTRtwJ8DGA1164EB",
+                 "/ip4/192.167.10.8/tcp/2121/p2p/12D3KooWQCbe8R4QD1jxnUs5SWWdFg5Kza3mBE94Cz1RJnLTXfNM",
+                ]
+  PeerExchange = true
+  [P2P.ConnManager]
+    Low = 50
+    High = 100
+    GracePeriod = 60000000000
+
+[RPC]
+  ListenAddr = "0.0.0.0:26658"
