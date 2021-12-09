@@ -25,4 +25,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Add config files for 4 light nodes
 - Create separate Dockerfiles for full and light nodes 
 - Update devnet/docker/docker-compose.yml to include 4 full nodes (up from 2) and 4 light nodes (up from 0)
-- Incrase sleep time before startup on full and light nodes so that they startup after the core nodes have produced a block
+- Increase sleep time before startup on full and light nodes so that they startup after the core nodes have produced a block
+- Update docker-compose gh action to work with new docker-compose file. 
