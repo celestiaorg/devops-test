@@ -1,0 +1,21 @@
+apiVersion: v1
+data:
+  priv_validator_key.json: |-
+    {
+      "address": "674321850224370D39978EC94393DBA86EB0E78C",
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "A6dM1EOD7JImalDQXtL2xDZIlmxYZ+HeWrjMwyM4blA="
+      },
+      "priv_key": {
+        "type": "tendermint/PrivKeyEd25519",
+        "value": "8rj/c1fIj8FjvrrlvYMCrmFzA/dUvwPvRiVF5VwuxW8Dp0zUQ4PskiZqUNBe0vbENkiWbFhn4d5auMzDIzhuUA=="
+      }
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-12-10T19:36:55Z"
+  name: core2-validator-key
+  namespace: default
+  resourceVersion: "128697"
+  uid: 3edf7a02-fcea-4847-9ebb-74a72775974a

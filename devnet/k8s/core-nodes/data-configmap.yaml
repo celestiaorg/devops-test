@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  priv_validator_state.json: |-
+    {
+        "height": "0",
+        "round": 0,
+        "step": 0
+      }
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-12-10T18:50:11Z"
+  name: data
+  namespace: default
+  resourceVersion: "126294"
+  uid: 2296d087-a2a3-4466-8ecd-05ec4d9041fe

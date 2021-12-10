@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: core1
+  name: core1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: core1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: core1
+    spec:
+      containers:
+        - args: ["start", "--p2p.persistent_peers",
+                "$(CORE0)@$(CORE0_SERVICE_HOST):26656",
+                "$(CORE2)@$(CORE2_SERVICE_HOST):26656",
+                "$(CORE3)@$(CORE3_SERVICE_HOST):26656"
+                ]
+          image: jbowen93/celestia-app:devnet-volumes
+          name: celestia-app
+          env:
+            - name: CORE0
+              valueFrom:
+                configMapKeyRef:
+                  name: peer-ids
+                  key: peer.core0
+            - name: CORE2
+              valueFrom:
+                configMapKeyRef:
+                  name: peer-ids
+                  key: peer.core2
+            - name: CORE3
+              valueFrom:
+                configMapKeyRef:
+                  name: peer-ids
+                  key: peer.core3
+          resources: {}
+          volumeMounts:
+          - name: core1-node-key-volume
+            mountPath: /celestia-app/config/node_key.json
+            subPath: node_key.json
+          - name: core1-validator-key-volume
+            mountPath: /celestia-app/config/priv_validator_key.json
+            subPath: priv_validator_key.json
+          - name: genesis-volume
+            mountPath: /celestia-app/config/genesis.json
+            subPath: genesis.json
+          - name: data-volume
+            mountPath: /celestia-app/data/priv_validator_state.json
+            subPath: priv_validator_state.json
+          - name: gentx-volume
+            mountPath: /celestia-app/config/gentx
+      restartPolicy: Always
+      volumes:
+      - name: gentx-volume
+        configMap:
+          name: gentx
+      - name: genesis-volume
+        configMap:
+          name: genesis
+          items:
+            - key: golden-genesis.json
+              path: genesis.json
+      - name: data-volume
+        configMap:
+          name: data
+          items:
+            - key: priv_validator_state.json
+              path: priv_validator_state.json
+      - name: core1-node-key-volume
+        configMap:
+          name: core1-node-key
+          items:
+            - key: node_key.json
+              path: node_key.json
+      - name: core1-validator-key-volume
+        configMap:
+          name: core1-validator-key
+          items:
+            - key: priv_validator_key.json
+              path: priv_validator_key.json
+status: {}
