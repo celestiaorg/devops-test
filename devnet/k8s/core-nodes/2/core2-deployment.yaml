@@ -16,12 +16,14 @@ spec:
     metadata:
       labels:
         app: core2
+      annotations:
+        cni.projectcalico.org/ipAddrs: "[\"10.244.69.2\"]"
     spec:
       containers:
         - args: ["start", "--p2p.persistent_peers",
-                "$(CORE0)@$(CORE0_SERVICE_HOST):26656",
-                "$(CORE1)@$(CORE1_SERVICE_HOST):26656",
-                "$(CORE3)@$(CORE3_SERVICE_HOST):26656"
+                "$(CORE0)",
+                "$(CORE1)",
+                "$(CORE3)"
                 ]
           image: jbowen93/celestia-app:devnet-volumes
           name: celestia-app
@@ -52,9 +54,6 @@ spec:
           - name: genesis-volume
             mountPath: /celestia-app/config/genesis.json
             subPath: genesis.json
-          - name: data-volume
-            mountPath: /celestia-app/data/priv_validator_state.json
-            subPath: priv_validator_state.json
           - name: gentx-volume
             mountPath: /celestia-app/config/gentx
       restartPolicy: Always
@@ -68,12 +67,6 @@ spec:
           items:
             - key: golden-genesis.json
               path: genesis.json
-      - name: data-volume
-        configMap:
-          name: data
-          items:
-            - key: priv_validator_state.json
-              path: priv_validator_state.json
       - name: core2-node-key-volume
         configMap:
           name: core2-node-key
