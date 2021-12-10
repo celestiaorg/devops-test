@@ -8,15 +8,6 @@ WORKDIR $APP
 # Copy in the binary
 COPY celestia-appd ${APP}/celestia-appd
 
-# Copy in the pre-generated configs
-# TODO: These should probably all be passed as Volumes
-COPY gentx ${APP}/config/gentx
-COPY golden-genesis.json ${APP}/config/genesis.json
-COPY config.toml ${APP}/config/config.toml
-COPY app.toml ${APP}/config/app.toml
-COPY client.toml ${APP}/config/client.toml
-COPY priv_validator_state.json ${APP}/data/priv_validator_state.json
-
 EXPOSE 26656 26657 1317 9090
 
 # This allows us to always set the --home directory using an env 
