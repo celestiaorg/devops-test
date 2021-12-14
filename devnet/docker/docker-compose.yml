@@ -2,7 +2,7 @@ version: '3'
 
 services:
   node0:
-    container_name: node0
+    container_name: core0
     image: "jbowen93/celestia-app:devnet"
     command: [
             "start",
@@ -19,7 +19,7 @@ services:
         ipv4_address: 192.167.10.2
 
   node1:
-    container_name: node1
+    container_name: core1
     image: "jbowen93/celestia-app:devnet"
     command: [
             "start",
@@ -36,7 +36,7 @@ services:
         ipv4_address: 192.167.10.3
 
   node2:
-    container_name: node2
+    container_name: core2
     image: "jbowen93/celestia-app:devnet"    
     command: [
             "start",
@@ -53,7 +53,7 @@ services:
         ipv4_address: 192.167.10.4
 
   node3:
-    container_name: node3
+    container_name: core3
     image: "jbowen93/celestia-app:devnet"
     command: [
             "start",
@@ -70,7 +70,7 @@ services:
         ipv4_address: 192.167.10.5
 
   full-node0:
-    container_name: full-node0
+    container_name: full0
     image: "jbowen93/celestia-node-full:devnet"
     command: [
             "--repo.path", "/celestia-full",
@@ -88,7 +88,7 @@ services:
         ipv4_address: 192.167.10.6
 
   full-node1:
-    container_name: full-node1
+    container_name: full1
     image: "jbowen93/celestia-node-full:devnet"
     command: [
             "--repo.path", "/celestia-full",
@@ -106,7 +106,7 @@ services:
         ipv4_address: 192.167.10.7
 
   full-node2:
-    container_name: full-node2
+    container_name: full2
     image: "jbowen93/celestia-node-full:devnet"
     command: [
             "--repo.path", "/celestia-full",
@@ -124,7 +124,7 @@ services:
         ipv4_address: 192.167.10.8
 
   full-node3:
-    container_name: full-node3
+    container_name: full3
     image: "jbowen93/celestia-node-full:devnet"
     command: [
             "--repo.path", "/celestia-full",
@@ -142,7 +142,7 @@ services:
         ipv4_address: 192.167.10.9
 
   light-node0:
-    container_name: light-node0
+    container_name: light0
     image: "jbowen93/celestia-node-light:devnet"
     command: [
             "--repo.path", "/celestia-light",
@@ -160,7 +160,7 @@ services:
         ipv4_address: 192.167.10.10
 
   light-node1:
-    container_name: light-node1
+    container_name: light1
     image: "jbowen93/celestia-node-light:devnet"
     command: [
             "--repo.path", "/celestia-light",
@@ -178,7 +178,7 @@ services:
         ipv4_address: 192.167.10.11
         
   light-node2:
-    container_name: light-node2
+    container_name: light2
     image: "jbowen93/celestia-node-light:devnet"
     command: [
             "--repo.path", "/celestia-light",
@@ -196,7 +196,7 @@ services:
         ipv4_address: 192.167.10.12
 
   light-node3:
-    container_name: light-node3
+    container_name: light3
     image: "jbowen93/celestia-node-light:devnet"
     command: [
             "--repo.path", "/celestia-light",

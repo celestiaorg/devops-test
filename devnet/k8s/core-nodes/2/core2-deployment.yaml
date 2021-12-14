@@ -19,14 +19,27 @@ spec:
       annotations:
         cni.projectcalico.org/ipAddrs: "[\"10.244.69.2\"]"
     spec:
+      initContainers:
+        - name: set-nodekey-permissions
+          image: alpine
+          command: [
+            "/bin/ash", "-c",
+            "cp /cache/OAZHALLLMV4Q /celestia-full/keys/OAZHALLLMV4Q && chmod 0600 /celestia-full/keys/OAZHALLLMV4Q"
+          ]
+          volumeMounts:
+            - name: full2-nodekey-cache
+              mountPath: /cache/OAZHALLLMV4Q
+              subPath: OAZHALLLMV4Q
+            - name: full2-nodekey-volume
+              mountPath: /celestia-full/keys/
       containers:
-        - args: ["start", "--p2p.persistent_peers",
+        - name: celestia-app
+          image: jbowen93/celestia-app:devnet-volumes
+          args: ["start", "--p2p.persistent_peers",
                 "$(CORE0)",
                 "$(CORE1)",
                 "$(CORE3)"
                 ]
-          image: jbowen93/celestia-app:devnet-volumes
-          name: celestia-app
           env:
             - name: CORE0
               valueFrom:
@@ -43,7 +56,6 @@ spec:
                 configMapKeyRef:
                   name: peer-ids
                   key: peer.core3
-          resources: {}
           volumeMounts:
           - name: core2-node-key-volume
             mountPath: /celestia-app/config/node_key.json
@@ -56,6 +68,25 @@ spec:
             subPath: genesis.json
           - name: gentx-volume
             mountPath: /celestia-app/config/gentx
+          resources: {}
+        - name: celestia-node
+          image: jbowen93/celestia-node-full:devnet
+          args:
+            - --repo.path
+            - /celestia-full
+            - start
+            - --core.remote
+            - tcp://127.0.0.1:26657
+            - --headers.trusted-hash
+            - 64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7
+          volumeMounts:
+            - name: full2-nodekey-volume
+              mountPath: /celestia-full/keys/OAZHALLLMV4Q
+              subPath: OAZHALLLMV4Q
+            - name: full2-config-volume
+              mountPath: /celestia-full/config.toml
+              subPath: config.toml
+          resources: {}
       restartPolicy: Always
       volumes:
       - name: gentx-volume
@@ -79,6 +110,19 @@ spec:
           items:
             - key: priv_validator_key.json
               path: priv_validator_key.json
+      - name: full2-config-volume
+        configMap:
+          name: full2-config
+          items:
+            - key: config-full2.toml
+              path: config.toml
+      - name: full2-nodekey-cache
+        configMap:
+          name: full2-nodekey
+          items:
+            - key: nodekey2
+              path: OAZHALLLMV4Q
+      - name: full2-nodekey-volume
 status: {}
 
 

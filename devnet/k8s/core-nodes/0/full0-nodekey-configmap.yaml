@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  nodekey0: |
+    {"body":"CAESQKF6EhKszJY5b1HrRh/3xnSfLBmubHlNeJL4lFlAc/WNmVniYX2EFvSthkB57Wt3bmLCoCzqYKSbKDjImjTYa4g="}
+kind: ConfigMap
+metadata:
+  name: full0-nodekey
+  namespace: default

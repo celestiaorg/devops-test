@@ -19,14 +19,27 @@ spec:
       annotations:
         cni.projectcalico.org/ipAddrs: "[\"10.244.69.1\"]"
     spec:
+      initContainers:
+        - name: set-nodekey-permissions
+          image: alpine
+          command: [
+            "/bin/ash", "-c",
+            "cp /cache/OAZHALLLMV4Q /celestia-full/keys/OAZHALLLMV4Q && chmod 0600 /celestia-full/keys/OAZHALLLMV4Q"
+          ]
+          volumeMounts:
+            - name: full1-nodekey-cache
+              mountPath: /cache/OAZHALLLMV4Q
+              subPath: OAZHALLLMV4Q
+            - name: full1-nodekey-volume
+              mountPath: /celestia-full/keys/
       containers:
-        - args: ["start", "--p2p.persistent_peers",
+        - name: celestia-app
+          image: jbowen93/celestia-app:devnet-volumes
+          args: ["start", "--p2p.persistent_peers",
                 "$(CORE0)",
                 "$(CORE2)",
                 "$(CORE3)"
                 ]
-          image: jbowen93/celestia-app:devnet-volumes
-          name: celestia-app
           env:
             - name: CORE0
               valueFrom:
@@ -43,7 +56,6 @@ spec:
                 configMapKeyRef:
                   name: peer-ids
                   key: peer.core3
-          resources: {}
           volumeMounts:
           - name: core1-node-key-volume
             mountPath: /celestia-app/config/node_key.json
@@ -54,11 +66,27 @@ spec:
           - name: genesis-volume
             mountPath: /celestia-app/config/genesis.json
             subPath: genesis.json
-          # - name: data-volume
-          #   mountPath: /celestia-app/data/priv_validator_state.json
-          #   subPath: priv_validator_state.json
           - name: gentx-volume
             mountPath: /celestia-app/config/gentx
+          resources: {}
+        - name: celestia-node
+          image: jbowen93/celestia-node-full:devnet
+          args:
+            - --repo.path
+            - /celestia-full
+            - start
+            - --core.remote
+            - tcp://127.0.0.1:26657
+            - --headers.trusted-hash
+            - 64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7
+          volumeMounts:
+            - name: full1-nodekey-volume
+              mountPath: /celestia-full/keys/OAZHALLLMV4Q
+              subPath: OAZHALLLMV4Q
+            - name: full1-config-volume
+              mountPath: /celestia-full/config.toml
+              subPath: config.toml
+          resources: {}
       restartPolicy: Always
       volumes:
       - name: gentx-volume
@@ -70,12 +98,6 @@ spec:
           items:
             - key: golden-genesis.json
               path: genesis.json
-      # - name: data-volume
-      #   configMap:
-      #     name: data
-      #     items:
-      #       - key: priv_validator_state.json
-      #         path: priv_validator_state.json
       - name: core1-node-key-volume
         configMap:
           name: core1-node-key
@@ -88,4 +110,17 @@ spec:
           items:
             - key: priv_validator_key.json
               path: priv_validator_key.json
+      - name: full1-config-volume
+        configMap:
+          name: full1-config
+          items:
+            - key: config-full1.toml
+              path: config.toml
+      - name: full1-nodekey-cache
+        configMap:
+          name: full1-nodekey
+          items:
+            - key: nodekey1
+              path: OAZHALLLMV4Q
+      - name: full1-nodekey-volume
 status: {}
