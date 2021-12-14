@@ -67,9 +67,13 @@ spec:
             subPath: genesis.json
           - name: gentx-volume
             mountPath: /celestia-app/config/gentx
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 25"]
           resources: {}
         - name: celestia-node
-          image: jbowen93/celestia-node-full:devnet
+          image: jbowen93/celestia-node-full:devnet-no-sleep
           args:
             - --repo.path
             - /celestia-full
