@@ -37,7 +37,8 @@ spec:
           args: ["start", "--p2p.persistent_peers",
                 "$(CORE1)",
                 "$(CORE2)",
-                "$(CORE3)"
+                "$(CORE3)",
+                "--rpc.laddr", "tcp://0.0.0.0:26657"
                 ]
           lifecycle:
             postStart:

@@ -38,8 +38,14 @@ spec:
           args: ["start", "--p2p.persistent_peers",
                 "$(CORE0)",
                 "$(CORE2)",
-                "$(CORE3)"
+                "$(CORE3)",
+                "--rpc.laddr", "tcp://0.0.0.0:26657"
                 ]
+          ports:
+          - name: rpc
+            containerPort: 26657
+          - name: p2p
+            containerPort: 26656
           env:
             - name: CORE0
               valueFrom:
