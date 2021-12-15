@@ -13,7 +13,7 @@ EXPOSE 2121
 RUN [ "/bin/bash", "-c", "exec ./celestia \
     light --repo.path ${APP} init" ]
 
-ENTRYPOINT [ "/bin/bash", "-c", "sleep 45 && \ 
-            exec ./celestia light \
+ENTRYPOINT [ "/bin/bash", "-c", \
+            "exec ./celestia light \
             \"${@}\"", "--" ]
 CMD ["--help"]

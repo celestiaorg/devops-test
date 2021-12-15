@@ -27,3 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Update devnet/docker/docker-compose.yml to include 4 full nodes (up from 2) and 4 light nodes (up from 0)
 - Increase sleep time before startup on full and light nodes so that they startup after the core nodes have produced a block
 - Update docker-compose gh action to work with new docker-compose file. 
+- Update `celestia-app` and `celestia-node` Dockerfiles to no longer copy config at build time. They now expect configuration to be provided through mounted volumes or passed as flags. 
+- Update `celestia-node` full and light Dockerfiles to no longer include a sleep before startup. 
+- Create Kubernetes resources to standup a cluster consisting of 4 pods with 1 `core-node` and 1 `full-node` and 4 pods with 1 `light-node`. 
+- Hardcode core + full pod IPs utilizing Calico CNI IPAM to allow for persistent p2p connections.

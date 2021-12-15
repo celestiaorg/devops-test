@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: light3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: light3
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: light3
+      annotations:
+    spec:
+      initContainers:
+        - name: set-nodekey-permissions
+          image: alpine
+          command: [
+            "/bin/ash", "-c",
+            "cp /cache/OAZHALLLMV4Q /celestia-light/keys/OAZHALLLMV4Q && chmod 0600 /celestia-light/keys/OAZHALLLMV4Q"
+          ]
+          volumeMounts:
+            - name: light3-nodekey-cache
+              mountPath: /cache/OAZHALLLMV4Q
+              subPath: OAZHALLLMV4Q
+            - name: light3-nodekey-volume
+              mountPath: /celestia-light/keys/
+      containers:
+        - name: light3
+          image: jbowen93/celestia-node-light:devnet-no-sleep
+          args: [
+            "--repo.path", "/celestia-light",
+            "start",
+            "--headers.trusted-peer", 
+            "/ip4/10.244.69.3/tcp/2121/p2p/12D3KooWA6uovjYCgFvWhAbrcQmnLihFy1gZkdyJt8SrPKZjeWda",
+            "--headers.trusted-hash",
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
+          ]
+          volumeMounts:
+            - name: light3-nodekey-volume
+              mountPath: /celestia-light/keys/OAZHALLLMV4Q
+              subPath: OAZHALLLMV4Q
+            - name: light-config-volume
+              mountPath: /celestia-light/config.toml
+              subPath: config.toml
+          resources: {}
+      restartPolicy: Always
+      volumes:
+      - name: light-config-volume
+        configMap:
+          name: light-config
+          items:
+            - key: config.toml
+              path: config.toml
+      - name: light3-nodekey-cache
+        configMap:
+          name: light3-nodekey
+          items:
+            - key: nodekey3
+              path: OAZHALLLMV4Q
+      - name: light3-nodekey-volume
+        emptyDir: {}
+status: {}
+

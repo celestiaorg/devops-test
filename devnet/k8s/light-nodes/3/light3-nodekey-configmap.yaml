@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  nodekey3: '{"body":"CAESQIXqoPByoYZunjx48edK8F228dhRLskigKo1921ixG2pnm9ugRIHG5lN0zlRKmex1wjVUyKKXDQQAbNuNb954KM="}'
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-12-15T07:55:43Z"
+  name: light3-nodekey
+  namespace: default

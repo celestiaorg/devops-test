@@ -1,0 +1,130 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: core1
+  name: core1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: core1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: core1
+      annotations:
+        cni.projectcalico.org/ipAddrs: "[\"10.244.69.1\"]"
+    spec:
+      initContainers:
+        - name: set-nodekey-permissions
+          image: alpine
+          command: [
+            "/bin/ash", "-c",
+            "cp /cache/OAZHALLLMV4Q /celestia-full/keys/OAZHALLLMV4Q && chmod 0600 /celestia-full/keys/OAZHALLLMV4Q"
+          ]
+          volumeMounts:
+            - name: full1-nodekey-cache
+              mountPath: /cache/OAZHALLLMV4Q
+              subPath: OAZHALLLMV4Q
+            - name: full1-nodekey-volume
+              mountPath: /celestia-full/keys/
+      containers:
+        - name: celestia-app
+          image: jbowen93/celestia-app:devnet-volumes
+          args: ["start", "--p2p.persistent_peers",
+                "$(CORE0)",
+                "$(CORE2)",
+                "$(CORE3)"
+                ]
+          env:
+            - name: CORE0
+              valueFrom:
+                configMapKeyRef:
+                  name: peer-ids
+                  key: peer.core0
+            - name: CORE2
+              valueFrom:
+                configMapKeyRef:
+                  name: peer-ids
+                  key: peer.core2
+            - name: CORE3
+              valueFrom:
+                configMapKeyRef:
+                  name: peer-ids
+                  key: peer.core3
+          volumeMounts:
+          - name: core1-node-key-volume
+            mountPath: /celestia-app/config/node_key.json
+            subPath: node_key.json
+          - name: core1-validator-key-volume
+            mountPath: /celestia-app/config/priv_validator_key.json
+            subPath: priv_validator_key.json
+          - name: genesis-volume
+            mountPath: /celestia-app/config/genesis.json
+            subPath: genesis.json
+          - name: gentx-volume
+            mountPath: /celestia-app/config/gentx
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 25"]
+          resources: {}
+        - name: celestia-node
+          image: jbowen93/celestia-node-full:devnet-no-sleep
+          args:
+            - --repo.path
+            - /celestia-full
+            - start
+            - --core.remote
+            - tcp://127.0.0.1:26657
+            - --headers.trusted-hash
+            - 64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7
+          volumeMounts:
+            - name: full1-nodekey-volume
+              mountPath: /celestia-full/keys/OAZHALLLMV4Q
+              subPath: OAZHALLLMV4Q
+            - name: full1-config-volume
+              mountPath: /celestia-full/config.toml
+              subPath: config.toml
+          resources: {}
+      restartPolicy: Always
+      volumes:
+      - name: gentx-volume
+        configMap:
+          name: gentx
+      - name: genesis-volume
+        configMap:
+          name: genesis
+          items:
+            - key: golden-genesis.json
+              path: genesis.json
+      - name: core1-node-key-volume
+        configMap:
+          name: core1-node-key
+          items:
+            - key: node_key.json
+              path: node_key.json
+      - name: core1-validator-key-volume
+        configMap:
+          name: core1-validator-key
+          items:
+            - key: priv_validator_key.json
+              path: priv_validator_key.json
+      - name: full1-config-volume
+        configMap:
+          name: full1-config
+          items:
+            - key: config-full1.toml
+              path: config.toml
+      - name: full1-nodekey-cache
+        configMap:
+          name: full1-nodekey
+          items:
+            - key: nodekey1
+              path: OAZHALLLMV4Q
+      - name: full1-nodekey-volume
+status: {}

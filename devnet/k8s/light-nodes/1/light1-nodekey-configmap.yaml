@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  nodekey1: '{"body":"CAESQES4mJTq/3TBgxq5UY31JZx/UqD4pL6HnpTlnfKJ3Y0pPsoO7Tf4q4eOmL7M0OcvhzhEe7lObAYfiFmTxl5eUQs="}'
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-12-15T07:55:17Z"
+  name: light1-nodekey
+  namespace: default
+  resourceVersion: "1608"
+  uid: 328c005d-1d2b-4079-b995-495e17689839
