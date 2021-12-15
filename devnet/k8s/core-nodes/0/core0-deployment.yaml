@@ -39,6 +39,10 @@ spec:
                 "$(CORE2)",
                 "$(CORE3)"
                 ]
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 25"]
           env:
             - name: CORE1
               valueFrom:
@@ -67,10 +71,7 @@ spec:
             subPath: genesis.json
           - name: gentx-volume
             mountPath: /celestia-app/config/gentx
-          lifecycle:
-            postStart:
-              exec:
-                command: ["/bin/sh", "-c", "sleep 25"]
+
           resources: {}
         - name: celestia-node
           image: jbowen93/celestia-node-full:devnet-no-sleep
