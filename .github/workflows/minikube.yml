@@ -23,8 +23,8 @@ jobs:
         run: | 
           core0=$(kubectl run curl -i --restart=Never --rm -q --image=curlimages/curl:7.80.0 -- -s "http://10.244.69.0:26657/block?height=1" | jq .result.block_id.hash)
           core1=$(kubectl run curl -i --restart=Never --rm -q --image=curlimages/curl:7.80.0 -- -s "http://10.244.69.1:26657/block?height=1" | jq .result.block_id.hash)
-          core1=$(kubectl run curl -i --restart=Never --rm -q --image=curlimages/curl:7.80.0 -- -s "http://10.244.69.2:26657/block?height=1" | jq .result.block_id.hash)
-          core1=$(kubectl run curl -i --restart=Never --rm -q --image=curlimages/curl:7.80.0 -- -s "http://10.244.69.3:26657/block?height=1" | jq .result.block_id.hash)
-          if [ $node0 != null ] && [ $node0 = $node1 ] && [ $node0 = $node2 ] && [ $node0 = $node3 ]; then echo "$node0: success" && exit 0; else echo "failure" && exit 1; fi
+          core2=$(kubectl run curl -i --restart=Never --rm -q --image=curlimages/curl:7.80.0 -- -s "http://10.244.69.2:26657/block?height=1" | jq .result.block_id.hash)
+          core3=$(kubectl run curl -i --restart=Never --rm -q --image=curlimages/curl:7.80.0 -- -s "http://10.244.69.3:26657/block?height=1" | jq .result.block_id.hash)
+          if [ $core0 != null ] && [ $core0 = $core1 ] && [ $core0 = $core2 ] && [ $core0 = $core3 ]; then echo "$core0: success" && exit 0; else echo "failure" && exit 1; fi
       - name: Create light nodes
         run: kubectl create -f devnet/k8s/light-nodes -R
