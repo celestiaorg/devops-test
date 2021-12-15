@@ -7,32 +7,24 @@ jobs:
   minikube:
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout source code"
-        uses: "actions/checkout@v2"
-      - name: Set up Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: 1.17
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+      - name: Checkout source code
+        uses: actions/checkout@v2
       - name: Start minikube
         id: minikube
         run: |
           curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
           install minikube-linux-amd64 /usr/local/bin/minikube
-          minikube start
-      - name: Build Image
-        run: |
-          export SHELL=/bin/bash
-          eval $(minikube docker-env)
-          make docker-build
-      - name: Deploy to Minikube
-        run: |
-          kubectl apply -f k8s/hello-dep.yaml
-          kubectl apply -f k8s/hello-svc.yaml
-      - name: Sleep
-        run: sleep 5s
-      - name: Test Service URLs
-        run: |
-          URL=$(minikube service hello --url)
-          curl $URL
+          minikube start --network-plugin=cni --cni=calico
+      - name: Create core nodes
+        run: kubectl create -f devnet/k8s/core-nodes -R
+      # - name: Sleep 45s
+      #   run: sleep 45s
+      - name: Test core nodes
+        run: | 
+          core0=$(kubectl run curl -i --restart=Never --rm -q --image=curlimages/curl:7.80.0 -- -s "http://10.244.69.0:26657/block?height=1" | jq .result.block_id.hash)
+          core1=$(kubectl run curl -i --restart=Never --rm -q --image=curlimages/curl:7.80.0 -- -s "http://10.244.69.1:26657/block?height=1" | jq .result.block_id.hash)
+          core1=$(kubectl run curl -i --restart=Never --rm -q --image=curlimages/curl:7.80.0 -- -s "http://10.244.69.2:26657/block?height=1" | jq .result.block_id.hash)
+          core1=$(kubectl run curl -i --restart=Never --rm -q --image=curlimages/curl:7.80.0 -- -s "http://10.244.69.3:26657/block?height=1" | jq .result.block_id.hash)
+          if [ $node0 != null ] && [ $node0 = $node1 ] && [ $node0 = $node2 ] && [ $node0 = $node3 ]; then echo "$node0: success" && exit 0; else echo "failure" && exit 1; fi
+      - name: Create light nodes
+        run: kubectl create -f devnet/k8s/light-nodes -R
