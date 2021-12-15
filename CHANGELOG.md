@@ -31,3 +31,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Update `celestia-node` full and light Dockerfiles to no longer include a sleep before startup. 
 - Create Kubernetes resources to standup a cluster consisting of 4 pods with 1 `core-node` and 1 `full-node` and 4 pods with 1 `light-node`. 
 - Hardcode core + full pod IPs utilizing Calico CNI IPAM to allow for persistent p2p connections.
+- Add devnet/k8s/README.md with instructions for setting up minimum viable k8s cluster
