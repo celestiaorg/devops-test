@@ -17,8 +17,8 @@ jobs:
           minikube start --network-plugin=cni --cni=calico
       - name: Create core nodes
         run: kubectl create -f devnet/k8s/core-nodes -R
-      - name: Sleep 25s
-        run: sleep 25s
+      - name: Sleep 45s
+        run: sleep 45s
       - name: Test core nodes
         run: | 
           core0=$(kubectl run curl -i --restart=Never --rm -q --image=curlimages/curl:7.80.0 -- -s "http://10.244.69.0:26657/block?height=1" | jq .result.block_id.hash)
