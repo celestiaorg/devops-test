@@ -34,3 +34,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Add devnet/k8s/README.md with instructions for setting up minimum viable k8s cluster
 - Update minikube GH action to standup Minimum Viable Cluster (MVC) and test that core nodes produce a block
 - Update docker-compose to take genesis.json file and gentx/ dir as volume mounts
+- Update the docker-compose.yml to use the new Docker images created in PRs ([#163](https://github.com/celestiaorg/celestia-app/pull/163)) and ([#295](https://github.com/celestiaorg/celestia-node/pull/295))
