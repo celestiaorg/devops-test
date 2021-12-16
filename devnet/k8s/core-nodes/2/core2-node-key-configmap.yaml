@@ -3,8 +3,6 @@ data:
   node_key.json: '{"priv_key":{"type":"tendermint/PrivKeyEd25519","value":"2qpWRJizEL9Vxuky4oS1h7Bo7eUCWJsBaZUIWuinysY4jy2VcUube1qGf9oLIsZuj4dj0iw6YPmA8mnvyRN5nA=="}}'
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2021-12-10T19:34:51Z"
   name: core2-node-key
   namespace: default
-  resourceVersion: "128604"
-  uid: d2fd23fc-e3aa-4a92-9153-3d2a50e251fb
+

@@ -34,7 +34,7 @@ spec:
               mountPath: /celestia-full/keys/
       containers:
         - name: celestia-app
-          image: jbowen93/celestia-app:devnet-volumes
+          image: jbowen93/celestia-app:multi
           args: ["start", "--p2p.persistent_peers",
                 "$(CORE0)",
                 "$(CORE1)",
@@ -80,8 +80,10 @@ spec:
                 command: ["/bin/sh", "-c", "sleep 25"]
           resources: {}
         - name: celestia-node
-          image: jbowen93/celestia-node-full:devnet-no-sleep
+          image: jbowen93/celestia-node:multi
           args:
+            - celestia
+            - full
             - --repo.path
             - /celestia-full
             - start
@@ -89,6 +91,9 @@ spec:
             - tcp://127.0.0.1:26657
             - --headers.trusted-hash
             - 64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7
+          env:
+            - name: NODE_TYPE
+              value: full
           volumeMounts:
             - name: full2-nodekey-volume
               mountPath: /celestia-full/keys/OAZHALLLMV4Q

@@ -3,8 +3,5 @@ data:
   nodekey3: '{"body":"CAESQAyGOmHnku2IIGQ3X6I4MpjEe/9Bhy0O5cne6hI5EBRzBD0R02D8//wGmHCaLrwoqSIcHiGm/XzqWxkUeLXQ3EU="}'
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2021-12-14T17:45:03Z"
   name: full3-nodekey
   namespace: default
-  resourceVersion: "29403"
-  uid: 24504660-dd67-4289-8d99-872086b7a357

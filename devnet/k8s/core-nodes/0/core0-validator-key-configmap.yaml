@@ -14,8 +14,6 @@ data:
     }
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2021-12-10T19:25:00Z"
   name: core0-validator-key
   namespace: default
-  resourceVersion: "128125"
-  uid: 3cba4125-76c0-48ea-9f1a-272930121c4f
+
