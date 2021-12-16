@@ -33,3 +33,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Hardcode core + full pod IPs utilizing Calico CNI IPAM to allow for persistent p2p connections.
 - Add devnet/k8s/README.md with instructions for setting up minimum viable k8s cluster
 - Update minikube GH action to standup Minimum Viable Cluster (MVC) and test that core nodes produce a block
+- Update docker-compose to take genesis.json file and gentx/ dir as volume mounts
