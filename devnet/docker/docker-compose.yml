@@ -3,7 +3,7 @@ version: '3'
 services:
   core0:
     container_name: core0
-    image: "jbowen93/celestia-app:devnet"
+    image: "jbowen93/celestia-app:multi"
     command: [
             "start",
             "--p2p.persistent_peers",
@@ -23,7 +23,7 @@ services:
 
   core1:
     container_name: core1
-    image: "jbowen93/celestia-app:devnet"
+    image: "jbowen93/celestia-app:multi"
     command: [
             "start",
             "--p2p.persistent_peers",
@@ -43,7 +43,7 @@ services:
 
   core2:
     container_name: core2
-    image: "jbowen93/celestia-app:devnet"    
+    image: "jbowen93/celestia-app:multi"    
     command: [
             "start",
             "--p2p.persistent_peers",
@@ -63,7 +63,7 @@ services:
 
   core3:
     container_name: core3
-    image: "jbowen93/celestia-app:devnet"
+    image: "jbowen93/celestia-app:multi"
     command: [
             "start",
             "--p2p.persistent_peers",
@@ -83,8 +83,12 @@ services:
 
   full0:
     container_name: full0
-    image: "jbowen93/celestia-node-full:devnet"
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=full
+      - SLEEP=25s
     command: [
+            "celestia", "full",
             "--repo.path", "/celestia-full",
             "start",
             "--core.remote", 
@@ -101,8 +105,12 @@ services:
 
   full1:
     container_name: full1
-    image: "jbowen93/celestia-node-full:devnet"
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=full
+      - SLEEP=25s
     command: [
+            "celestia", "full",
             "--repo.path", "/celestia-full",
             "start",
             "--core.remote", 
@@ -119,8 +127,12 @@ services:
 
   full2:
     container_name: full2
-    image: "jbowen93/celestia-node-full:devnet"
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=full
+      - SLEEP=25s
     command: [
+            "celestia", "full",
             "--repo.path", "/celestia-full",
             "start",
             "--core.remote", 
@@ -137,8 +149,12 @@ services:
 
   full3:
     container_name: full3
-    image: "jbowen93/celestia-node-full:devnet"
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=full
+      - SLEEP=25s
     command: [
+            "celestia", "full",
             "--repo.path", "/celestia-full",
             "start",
             "--core.remote", 
@@ -155,8 +171,12 @@ services:
 
   light0:
     container_name: light0
-    image: "jbowen93/celestia-node-light:devnet"
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=light
+      - SLEEP=45s
     command: [
+            "celestia", "light",
             "--repo.path", "/celestia-light",
             "start",
             "--headers.trusted-peer",
@@ -173,8 +193,12 @@ services:
 
   light1:
     container_name: light1
-    image: "jbowen93/celestia-node-light:devnet"
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=light
+      - SLEEP=45s
     command: [
+            "celestia", "light",
             "--repo.path", "/celestia-light",
             "start",
             "--headers.trusted-peer",
@@ -191,8 +215,12 @@ services:
         
   light2:
     container_name: light2
-    image: "jbowen93/celestia-node-light:devnet"
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=light
+      - SLEEP=45s
     command: [
+            "celestia", "light",
             "--repo.path", "/celestia-light",
             "start",
             "--headers.trusted-peer",
@@ -209,8 +237,12 @@ services:
 
   light3:
     container_name: light3
-    image: "jbowen93/celestia-node-light:devnet"
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=light
+      - SLEEP=45s
     command: [
+            "celestia", "light",
             "--repo.path", "/celestia-light",
             "start",
             "--headers.trusted-peer",
