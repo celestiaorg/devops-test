@@ -3,8 +3,5 @@ data:
   nodekey2: '{"body":"CAESQPffF6Bl1xr1+zDYq6kuCdYcgIP0z9/71qX8e7CGJRfF1bWgtWAjpQcUO1nqdl8kfH9Qq8OYxnPzoA1cIppXpx4="}'
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2021-12-14T17:44:52Z"
   name: full2-nodekey
   namespace: default
-  resourceVersion: "29394"
-  uid: 5c2f06f2-56fe-4108-bc54-aea4cefdbf5c

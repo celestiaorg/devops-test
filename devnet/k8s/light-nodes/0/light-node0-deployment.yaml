@@ -29,8 +29,9 @@ spec:
               mountPath: /celestia-light/keys/
       containers:
         - name: light0
-          image: jbowen93/celestia-node-light:devnet-no-sleep
+          image: jbowen93/celestia-node:multi
           args: [
+            "celestia", "light",
             "--repo.path", "/celestia-light",
             "start",
             "--headers.trusted-peer", 
@@ -38,6 +39,9 @@ spec:
             "--headers.trusted-hash",
             "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
           ]
+          env:
+            - name: NODE_TYPE
+              value: light
           volumeMounts:
             - name: light0-nodekey-volume
               mountPath: /celestia-light/keys/OAZHALLLMV4Q
