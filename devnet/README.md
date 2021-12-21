@@ -2,7 +2,7 @@
 
 This directory contains contiguration files to standup a Celestia devnet consisting 4 Core Nodes, 4 Bridge Nodes, and 4 Light nodes. 
 
-This can be done using either Kubernetes or Docker Compose.
+This can be done using either Docker Compose or Kubernetes.
 
 ## Docker Compose
 
@@ -10,7 +10,8 @@ The docker compose files will standup a cluster that looks like the below pictur
 
 ![](mvc-docker-compose-no-labels.png "Docker Compose MVC")
 
-> ⚠ The preconfigured nodekeys for the bridge and light nodes must have the correct permissions set. The first time you setup the cluster you should run
+> ⚠ The preconfigured nodekeys for the bridge and light nodes must have the correct permissions set.  
+> The first time you setup the cluster you should run
 > ```
 > chmod 0600 celestia-node/full/*/nodekey* && chmod 0600 > celestia-node/light/*/nodekey*
 > ```
@@ -44,8 +45,8 @@ The Kubernetes config files will standup a cluster that looks like the below pic
 To setup the Kubernetes cluster run
 ```
 kubectl create -f k8s/core-nodes -R && \
-echo "Waiting 30s for core nodes to produce a block" && \
-sleep 30s && \
+echo "Waiting 45s for core nodes to produce a block" && \
+sleep 45s && \
 kubectl create -f k8s/light-nodes -R
 ```
 
@@ -71,7 +72,6 @@ kubectl logs -l app=core0 -c celestia-app
 or
 ```
 kubectl logs -l app=light0
-
 ```
 
 You can also retrieve logs using a pods name
