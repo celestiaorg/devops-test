@@ -36,3 +36,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Update docker-compose to take genesis.json file and gentx/ dir as volume mounts
 - Update the docker-compose.yml to use the new Docker images created in PRs ([#163](https://github.com/celestiaorg/celestia-app/pull/163)) and ([#295](https://github.com/celestiaorg/celestia-node/pull/295))
 - Update k8s/ config files to use new docker images created in PRs ([#163](https://github.com/celestiaorg/celestia-app/pull/163)) and ([#295](https://github.com/celestiaorg/celestia-node/pull/295))
+- Split devnet/docker/docker-compose.yml into 3 files, one for each node type
+- Create devnet/README.md which contains instructions for utilizing both the docker-compose and K8s dev clusters
