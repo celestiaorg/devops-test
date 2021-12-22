@@ -17,7 +17,6 @@ services:
              ]
     volumes:
        - ${PWD}/celestia-node/light/light0/nodekey0:/celestia-light/keys/OAZHALLLMV4Q:ro
-       - ${PWD}/celestia-node/light/light0/config-light0.toml:/celestia-light/config.toml:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.10
@@ -38,7 +37,6 @@ services:
              ]
     volumes:
        - ${PWD}/celestia-node/light/light1/nodekey1:/celestia-light/keys/OAZHALLLMV4Q:ro
-       - ${PWD}/celestia-node/light/light1/config-light1.toml:/celestia-light/config.toml:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.11
@@ -59,7 +57,6 @@ services:
              ]
     volumes:
        - ${PWD}/celestia-node/light/light2/nodekey2:/celestia-light/keys/OAZHALLLMV4Q:ro
-       - ${PWD}/celestia-node/light/light2/config-light2.toml:/celestia-light/config.toml:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.12
@@ -80,7 +77,6 @@ services:
              ]
     volumes:
        - ${PWD}/celestia-node/light/light3/nodekey3:/celestia-light/keys/OAZHALLLMV4Q:ro
-       - ${PWD}/celestia-node/light/light3/config-light3.toml:/celestia-light/config.toml:ro
     networks:
       localnet:
         ipv4_address: 192.167.10.13
