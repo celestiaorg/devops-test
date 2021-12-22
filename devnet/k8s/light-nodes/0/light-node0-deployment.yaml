@@ -46,18 +46,9 @@ spec:
             - name: light0-nodekey-volume
               mountPath: /celestia-light/keys/OAZHALLLMV4Q
               subPath: OAZHALLLMV4Q
-            - name: light-config-volume
-              mountPath: /celestia-light/config.toml
-              subPath: config.toml
           resources: {}
       restartPolicy: Always
       volumes:
-      - name: light-config-volume
-        configMap:
-          name: light-config
-          items:
-            - key: config.toml
-              path: config.toml
       - name: light0-nodekey-cache
         configMap:
           name: light0-nodekey
