@@ -38,3 +38,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Update k8s/ config files to use new docker images created in PRs ([#163](https://github.com/celestiaorg/celestia-app/pull/163)) and ([#295](https://github.com/celestiaorg/celestia-node/pull/295))
 - Split devnet/docker/docker-compose.yml into 3 files, one for each node type
 - Create devnet/README.md which contains instructions for utilizing both the docker-compose and K8s dev clusters
+- Replace config.toml files with `--p2p.mutual` in bridge nodes and remove unneeded config.toml files in light nodes.
