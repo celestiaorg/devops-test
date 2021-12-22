@@ -1,0 +1,95 @@
+version: '3'
+
+services:
+  full0:
+    container_name: full0
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=full
+    command: [
+            "celestia", "full",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.2:26657",
+            "--headers.trusted-hash", 
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full/full0/nodekey0:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/full/full0/config-full0.toml:/celestia-full/config.toml:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.6
+
+  full1:
+    container_name: full1
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=full
+    command: [
+            "celestia", "full",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.3:26657",
+            "--headers.trusted-hash", 
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full/full1/nodekey1:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/full/full1/config-full1.toml:/celestia-full/config.toml:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.7
+
+  full2:
+    container_name: full2
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=full
+    command: [
+            "celestia", "full",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.4:26657",
+            "--headers.trusted-hash", 
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full/full2/nodekey2:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/full/full2/config-full2.toml:/celestia-full/config.toml:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.8
+
+  full3:
+    container_name: full3
+    image: "jbowen93/celestia-node:multi"
+    environment:
+      - NODE_TYPE=full
+    command: [
+            "celestia", "full",
+            "--repo.path", "/celestia-full",
+            "start",
+            "--core.remote", 
+            "tcp://192.167.10.5:26657",
+            "--headers.trusted-hash", 
+            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
+             ]
+    volumes:
+       - ${PWD}/celestia-node/full/full3/nodekey3:/celestia-full/keys/OAZHALLLMV4Q:ro
+       - ${PWD}/celestia-node/full/full3/config-full3.toml:/celestia-full/config.toml:ro
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.9
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 192.167.10.0/16
