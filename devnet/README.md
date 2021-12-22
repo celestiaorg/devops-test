@@ -38,6 +38,12 @@ docker-compose -f docker/light-docker-compose.yml logs
 
 ## Kubernetes (K8s)
 
+### Requirements
+ 1. It is recommended to run this on a VM with at least 2 CPUs and 4GB of Ram  
+ 2. Your K8s cluster must use [Calico's CNI plugin](https://github.com/projectcalico/calico)  
+
+> GKE, EKS, AKS, and Minikube all come with built in support for Calico. Check the instructions for enabling it [here](https://projectcalico.docs.tigera.io/getting-started/kubernetes).
+
 The Kubernetes config files will standup a cluster that looks like the below picture
 
 ![](mvc-k8s-no-labels.png "K8s MVC")
