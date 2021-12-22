@@ -24,14 +24,14 @@ spec:
           image: alpine
           command: [
             "/bin/ash", "-c",
-            "cp /cache/OAZHALLLMV4Q /celestia-full/keys/OAZHALLLMV4Q && chmod 0600 /celestia-full/keys/OAZHALLLMV4Q"
+            "cp /cache/OAZHALLLMV4Q /celestia-bridge/keys/OAZHALLLMV4Q && chmod 0600 /celestia-bridge/keys/OAZHALLLMV4Q"
           ]
           volumeMounts:
-            - name: full2-nodekey-cache
+            - name: bridge2-nodekey-cache
               mountPath: /cache/OAZHALLLMV4Q
               subPath: OAZHALLLMV4Q
-            - name: full2-nodekey-volume
-              mountPath: /celestia-full/keys/
+            - name: bridge2-nodekey-volume
+              mountPath: /celestia-bridge/keys/
       containers:
         - name: celestia-app
           image: jbowen93/celestia-app:multi
@@ -81,9 +81,9 @@ spec:
           resources: {}
         - name: celestia-node
           image: jbowen93/celestia-node:multi
-          args: ["celestia", "full",
+          args: ["celestia", "bridge",
                  "--repo.path",
-                 "/celestia-full",
+                 "/celestia-bridge",
                  "start",
                  "--core.remote",
                  "tcp://127.0.0.1:26657",
@@ -94,10 +94,10 @@ spec:
                 ]
           env:
             - name: NODE_TYPE
-              value: full
+              value: bridge
           volumeMounts:
-            - name: full2-nodekey-volume
-              mountPath: /celestia-full/keys/OAZHALLLMV4Q
+            - name: bridge2-nodekey-volume
+              mountPath: /celestia-bridge/keys/OAZHALLLMV4Q
               subPath: OAZHALLLMV4Q
           resources: {}
       restartPolicy: Always
@@ -123,13 +123,13 @@ spec:
           items:
             - key: priv_validator_key.json
               path: priv_validator_key.json
-      - name: full2-nodekey-cache
+      - name: bridge2-nodekey-cache
         configMap:
-          name: full2-nodekey
+          name: bridge2-nodekey
           items:
             - key: nodekey2
               path: OAZHALLLMV4Q
-      - name: full2-nodekey-volume
+      - name: bridge2-nodekey-volume
 status: {}
 
 

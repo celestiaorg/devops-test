@@ -4,8 +4,5 @@ data:
     {"body":"CAESQBEMR7BMajb9jEsFjlcVBMcY1Oqm0clE+I5YN9+obF42X/GwcoPlT7DzKJlnVfjWSTA0ofx4AqmD+Ol26G/9SPA="}
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2021-12-14T17:44:40Z"
-  name: full1-nodekey
+  name: bridge1-nodekey
   namespace: default
-  resourceVersion: "29385"
-  uid: 794d13f9-9d2a-467a-aec6-7b0cda73b94f

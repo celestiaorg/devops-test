@@ -1,7 +1,0 @@
-apiVersion: v1
-data:
-  nodekey3: '{"body":"CAESQAyGOmHnku2IIGQ3X6I4MpjEe/9Bhy0O5cne6hI5EBRzBD0R02D8//wGmHCaLrwoqSIcHiGm/XzqWxkUeLXQ3EU="}'
-kind: ConfigMap
-metadata:
-  name: full3-nodekey
-  namespace: default

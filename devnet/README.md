@@ -13,14 +13,14 @@ The docker compose files will standup a cluster that looks like the below pictur
 > ⚠ The preconfigured nodekeys for the bridge and light nodes must have the correct permissions set.  
 > The first time you setup the cluster you should run
 > ```
-> chmod 0600 celestia-node/full/*/nodekey* && chmod 0600 > celestia-node/light/*/nodekey*
+> chmod 0600 celestia-node/bridge/*/nodekey* && chmod 0600 > celestia-node/light/*/nodekey*
 > ```
 
 To setup the docker compose cluster run
 ```
 ./start-docker.sh
 ```
-> This will take about a minute as you must first wait for the core nodes to generate a block before the full nodes can be started (the first sleep) and then wait for the full nodes to sync a block before starting the light nodes (the second sleep).
+> This will take about a minute as you must first wait for the core nodes to generate a block before the bridge nodes can be started (the first sleep) and then wait for the bridge nodes to sync a block before starting the light nodes (the second sleep).
 
 To stop the docker compose cluster run
 ```
@@ -56,7 +56,7 @@ sleep 45s && \
 kubectl create -f k8s/light-nodes -R
 ```
 
-> This will take about a minute as you must first wait for the core nodes to generate a block before the full nodes can be started (this is configured within the K8s files) and then wait for the full nodes to sync a block before starting the light nodes (the sleep command).
+> This will take about a minute as you must first wait for the core nodes to generate a block before the bridge nodes can be started (this is configured within the K8s files) and then wait for the bridge nodes to sync a block before starting the light nodes (the sleep command).
 
 To list all of the pods in the cluster run
 ```

@@ -12,7 +12,7 @@ jobs:
       - name: "Setup and Test Cluster"
         run: |
           cd devnet
-          chmod 0600 celestia-node/full/*/nodekey* && chmod 0600 celestia-node/light/*/nodekey*
+          chmod 0600 celestia-node/bridge/*/nodekey* && chmod 0600 celestia-node/light/*/nodekey*
           docker-compose -f docker/docker-compose.yml up -d
           echo "Waiting for cluster to come up"
           sleep 50
