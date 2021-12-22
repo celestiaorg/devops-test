@@ -9,6 +9,10 @@ on:
 jobs:
   pre-release:
     runs-on: "ubuntu-latest"
+    defaults:
+      run:
+        shell: bash
+        working-directory: hello
     permissions:
       contents: write 
       packages: write 
@@ -34,6 +38,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
+          context: hello
           push: true
           tags: ghcr.io/celestiaorg/devops-test:latest
       - uses: "marvinpinto/action-automatic-releases@latest"
