@@ -81,16 +81,17 @@ spec:
           resources: {}
         - name: celestia-node
           image: jbowen93/celestia-node:multi
-          args:
-            - celestia
-            - full
-            - --repo.path
-            - /celestia-full
-            - start
-            - --core.remote
-            - tcp://127.0.0.1:26657
-            - --headers.trusted-hash
-            - 64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7
+          args: ["celestia", "full",
+                 "--repo.path",
+                 "/celestia-full",
+                 "start",
+                 "--core.remote",
+                 "tcp://127.0.0.1:26657",
+                 "--headers.trusted-hash",
+                 "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7",
+                 "--p2p.mutual",
+                 "/ip4/192.167.10.7/tcp/2121/p2p/12D3KooWGGtejCnY3Q9XUUy6muSRm1Whgf8ijTRtwJ8DGA1164EB,/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw,/ip4/192.167.10.9/tcp/2121/p2p/12D3KooWA6uovjYCgFvWhAbrcQmnLihFy1gZkdyJt8SrPKZjeWda"
+                ]
           env:
             - name: NODE_TYPE
               value: full
@@ -98,9 +99,6 @@ spec:
             - name: full2-nodekey-volume
               mountPath: /celestia-full/keys/OAZHALLLMV4Q
               subPath: OAZHALLLMV4Q
-            - name: full2-config-volume
-              mountPath: /celestia-full/config.toml
-              subPath: config.toml
           resources: {}
       restartPolicy: Always
       volumes:
@@ -125,12 +123,6 @@ spec:
           items:
             - key: priv_validator_key.json
               path: priv_validator_key.json
-      - name: full2-config-volume
-        configMap:
-          name: full2-config
-          items:
-            - key: config-full2.toml
-              path: config.toml
       - name: full2-nodekey-cache
         configMap:
           name: full2-nodekey
