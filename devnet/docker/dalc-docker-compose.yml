@@ -3,7 +3,7 @@ version: '3'
 services:
   dalc0:
     container_name: dalc0
-    image: "jbowen93/dalc:test7"
+    image: "jbowen93/dalc:latest"
     environment:
       - MY_VAL_ADDRESS=celes1dm7fp7uwrr5y68v48gg8jhd2cku7vt7f4l8w0s
     command: [
@@ -12,8 +12,9 @@ services:
              ]
     volumes:
        - ${PWD}/dalc/celestia-app/keyring-test/:/root/keyring-test/:ro
-       - ${PWD}/dalc/dalc.toml:/root/dalc.toml
-       - ${PWD}/dalc/celestia-light:/root/celestia-light
+       - ${PWD}/dalc/dalc.toml:/root/.dalc/dalc.toml
+       - ${PWD}/dalc/height_map.json:/root/.dalc/height_map.json
+       - ${PWD}/dalc/celestia-light:/root/.celestia-light
 
     networks:
       localnet:
