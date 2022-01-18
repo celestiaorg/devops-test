@@ -1,0 +1,23 @@
+#cloud-config
+groups:
+  - ubuntu: [root,sys]
+  - celestia
+
+# Add users to the system. Users are added after groups are added.
+users:
+  - default
+  - name: celestia
+    gecos: celestia
+    shell: /bin/bash
+    primary_group: celestia
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    lock_passwd: false
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwX8oGG1+ID+1ogG6ZqPNuBlqvv9GxxLXT6pcatLqr4 jskybowen@gmail.com
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJncTNx1fAJiHjYe1PgLC2P3iqLqdVjt3WC4Zn8wRCov josh@celestia.org
+
+runcmd:
+  - sudo apt-get update
+  - 
+

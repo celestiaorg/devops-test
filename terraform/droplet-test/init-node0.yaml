@@ -1,0 +1,40 @@
+#cloud-config
+packages:
+  - jq
+  - moreutils
+
+# Add users to the system.
+users:
+  - name: celestia
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwX8oGG1+ID+1ogG6ZqPNuBlqvv9GxxLXT6pcatLqr4 jskybowen@gmail.com
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJncTNx1fAJiHjYe1PgLC2P3iqLqdVjt3WC4Zn8wRCov josh@celestia.org
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
+    lock_passwd: false
+    
+# Set environment variables
+write_files:
+- path: /etc/environment
+  content: |
+    node_name="MightyValidator-0"
+    node_num="0"
+  append: true
+- path: /home/celestia/init-vm.sh
+  permissions: 0744
+  content: |
+    #!/usr/bin/env bash
+    set -e
+    wget "https://fra1.digitaloceanspaces.com/celestia-node-binaries/celestia-appd"
+    chmod +x celestia-appd
+    mv celestia-appd /usr/local/bin
+    sudo git clone "https://github.com/celestiaorg/networks.git"
+    chmod +x networks/scripts/firewall_ubuntu.sh
+    sudo networks/scripts/firewall_ubuntu.sh
+    sudo networks/scripts/1_create_key.sh $node_name | tail -n 1 > acc_addr_$node_num.txt
+
+package_update: true
+
+runcmd:
+  - sudo bash /home/celestia/init-vm.sh
