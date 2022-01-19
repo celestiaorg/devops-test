@@ -9,7 +9,7 @@ mkdir orchestrator
 celestia-appd --home orchestrator init orchestrator --chain-id $chain_id
 
 # Create 4 nodes with keys
-nodes=( eph0 eph1 eph2 eph3 )
+nodes=( core0 core1 core2 core3 )
 for name in "${nodes[@]}"
 do
     : 
