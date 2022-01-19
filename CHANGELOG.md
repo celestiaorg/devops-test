@@ -41,3 +41,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Replace config.toml files with `--p2p.mutual` in bridge nodes and remove unneeded config.toml files in light nodes
 - Fix broken pre-release GH action by running it on the `/hello` dir
 - Replace full node config volumes with flags and remove unneeded config volumes from light nodes in `devnet/k8s` dir
+- Regenesis of celestia-app nodes resulting in new keys and a new genesis.json
+- Added `devnet/dalc` directory containing config files for the https://github.com/celestiaorg/dalc docker image and an associated `docker/dalc-docker-compose.yml` file
+- Lots of cleanup of files that no longer serve the purpose of this repository

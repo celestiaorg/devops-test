@@ -41,3 +41,10 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Ignore most celestia-light config files created on 'dalc init`. 
+# Leave LOCK because we need at least one file for git to recognize the directory which must already exist
+devnet/dalc/celestia-light/data/000000.vlog
+devnet/dalc/celestia-light/data/KEYREGISTRY
+devnet/dalc/celestia-light/data/MANIFEST
+devnet/dalc/celestia-light/lock
