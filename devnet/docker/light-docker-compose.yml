@@ -3,7 +3,7 @@ version: '3'
 services:
   light0:
     container_name: light0
-    image: "jbowen93/celestia-node:multi"
+    image: "ghcr.io/jbowen93/celestia-node:v0.1.2"
     environment:
       - NODE_TYPE=light
     command: [
@@ -13,7 +13,7 @@ services:
             "--headers.trusted-peer",
             "/ip4/192.167.10.6/tcp/2121/p2p/12D3KooWL8z3KARAYJcmExhDsGwKbjChKeGaJpFPENyADdxmEHzw",
             "--headers.trusted-hash", 
-            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
+            "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
     volumes:
        - ${PWD}/celestia-node/light/light0/nodekey0:/celestia-light/keys/OAZHALLLMV4Q:ro
@@ -23,7 +23,7 @@ services:
 
   light1:
     container_name: light1
-    image: "jbowen93/celestia-node:multi"
+    image: "ghcr.io/jbowen93/celestia-node:v0.1.2"
     environment:
       - NODE_TYPE=light
     command: [
@@ -33,7 +33,7 @@ services:
             "--headers.trusted-peer",
             "/ip4/192.167.10.7/tcp/2121/p2p/12D3KooWGGtejCnY3Q9XUUy6muSRm1Whgf8ijTRtwJ8DGA1164EB",
             "--headers.trusted-hash", 
-            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
+            "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
     volumes:
        - ${PWD}/celestia-node/light/light1/nodekey1:/celestia-light/keys/OAZHALLLMV4Q:ro
@@ -43,7 +43,7 @@ services:
         
   light2:
     container_name: light2
-    image: "jbowen93/celestia-node:multi"
+    image: "ghcr.io/jbowen93/celestia-node:v0.1.2"
     environment:
       - NODE_TYPE=light
     command: [
@@ -53,7 +53,7 @@ services:
             "--headers.trusted-peer",
             "/ip4/192.167.10.8/tcp/2121/p2p/12D3KooWQCbe8R4QD1jxnUs5SWWdFg5Kza3mBE94Cz1RJnLTXfNM",
             "--headers.trusted-hash", 
-            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
+            "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
     volumes:
        - ${PWD}/celestia-node/light/light2/nodekey2:/celestia-light/keys/OAZHALLLMV4Q:ro
@@ -63,7 +63,7 @@ services:
 
   light3:
     container_name: light3
-    image: "jbowen93/celestia-node:multi"
+    image: "ghcr.io/jbowen93/celestia-node:v0.1.2"
     environment:
       - NODE_TYPE=light
     command: [
@@ -73,7 +73,7 @@ services:
             "--headers.trusted-peer",
             "/ip4/192.167.10.9/tcp/2121/p2p/12D3KooWA6uovjYCgFvWhAbrcQmnLihFy1gZkdyJt8SrPKZjeWda",
             "--headers.trusted-hash", 
-            "64D831D041A57A9D93078B445F7B1347024A9B5A8A444086C0B556B65A8A96C7"
+            "54A8B66D2BEF13850D67C8D474E196BD7485FE5A79989E31B17169371B0A9C96"
              ]
     volumes:
        - ${PWD}/celestia-node/light/light3/nodekey3:/celestia-light/keys/OAZHALLLMV4Q:ro

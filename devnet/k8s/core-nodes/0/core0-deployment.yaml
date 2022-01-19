@@ -33,7 +33,7 @@ spec:
               mountPath: /celestia-full/keys/
       containers:
         - name: celestia-app
-          image: jbowen93/celestia-app:multi
+          image: ghcr.io/celestiaorg/celestia-app:latest
           args: ["start", "--p2p.persistent_peers",
                 "$(CORE1)",
                 "$(CORE2)",
